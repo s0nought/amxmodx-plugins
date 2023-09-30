@@ -103,6 +103,41 @@ MSG_AIM_SPAWN = %s 出生点
 ERROR_POINT_NOTFOUND = 错误: 无法定位出生点.
 ERROR_SAVE_SPAWNSFLIE = 错误: 无法保存出生点文件.
 
+[cs]
+ON = Zapnout
+OFF = Vypnout
+MENU_TITLE = Upravit spawny na mape
+MENU_ADD_SPAWN = Pridat spawn %s
+MENU_ADD_LOCATION = Pridat spawnovaci lokaci
+MENU_LOCATION_CURRENT = Momentalni lokace
+MENU_LOCATION_ABOVE = Nad momentalni pozici
+MENU_SAVE_ALL_SPAWNS = Uloz vsechny spawny
+MENU_CLEAR_ALL_T_SPAWNS = Smaz vsechny T spawny
+MENU_CLEAR_ALL_CT_SPAWNS = Smaz vsechny CT spawny
+MENU_CLEAR_SPAWN = Smaz spawn na ktery miris
+MENU_TURN_LEFT = Otoc spawn doleva
+MENU_TURN_RIGHT = Otoc spawn doprava
+MENU_DEL_SPAWNS_FILE = Smaz soubor se spawnama
+MENU_EXPORT_FOR_RIPENT = Vygeneruj spawn soubor pro ENT
+MENU_ORIGIN_SPAWNS = Puvodni spawny
+MENU_EDIT_SPAWNS = Uprav spawny
+MENU_NOTICE_SAVE = Upozorneni: Je treba ulozit spawny a restartovat mapu pro aplikaci zmen
+MENU_SAFE_CHECK = Zkontrolovat bezpecnou vzdalenost
+MENU_EXIT = Odejit
+MENU_NEXT = Dalsi
+MENU_BACK = Zpet
+MSG_ALREADY_INUSE = Nekdo jiz pouziva spawnmenu - spawn editor muze pouzivat v jednu chvili pouze jeden hrac.
+MSG_FUNCTION_DISABLED = Spawn editor ne zakazany, napis amx_spawn_editor 1 pro povoleni.
+MSG_SAVE_SPAWNSFLIE = Ukladani spawnu dokonceno.
+MSG_CLEAR_SPAWN = Vymazani spawnu %s uspesne dokonceno.
+MSG_DEL_SPAWNSFILE = Vymazani spawnu na mape uspesne dokonceno.
+MSG_EXOPRT_SPAWNSFLIE = Export vsech spawnu do
+MSG_AUTO_REMOVE_SPAWN = Automaticky smaz %s spatne spawny.
+MSG_CHECK_FAULT = Upozorneni: Nebezpecne umisteni.
+MSG_AIM_SPAWN = %s spawn
+ERROR_POINT_NOTFOUND = Chyba: Nemohu nalezt umisteni lokace.
+ERROR_SAVE_SPAWNSFLIE = Chyba: Nemohu ulozit spawny.
+
 [cz]
 ON = Zapnuto
 OFF = Vypnuto
