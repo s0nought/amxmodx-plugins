@@ -832,7 +832,7 @@ stock Point_WriteToFlie(Flie[],team,entity,saveformat)
       write_file(Flie, line , -1)
       format(line, 127, "  ^"origin^" ^"%d %d %d^"", nOrigin[0], nOrigin[1], nOrigin[2])
       write_file(Flie, line, -1)
-      format(line, 127, "  ^"angle^" ^"0 %d 0^"^n}^n", nAngles[1])
+      format(line, 127, "  ^"angles^" ^"0 %d 0^"^n}^n", nAngles[1])
       write_file(Flie, line, -1)
    }
 }
