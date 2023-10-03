@@ -2,7 +2,7 @@
 
 _**Note:** newer entries are added to the top._
 
-## [1.0] 2006.10.23
+## [1.0.16] 2006.10.23
 
 ### Added
 
@@ -17,6 +17,6 @@ _**Note:** newer entries are added to the top._
 - The Del spawns can not be less than origin limit.  
 _s0nought: I wasn't able to interpret this one._
 
-## [0.5] 2006.08.23
+## [0.5.0] 2006.08.23
 
 Release of the first version of the plugin.
