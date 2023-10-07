@@ -31,7 +31,7 @@ MSG_AUTO_REMOVE_SPAWN = Auto-removed a bad %s spawn point.
 MSG_CHECK_FAULT = Error: this position is too close to other spawns or world objects.
 MSG_AIM_SPAWN = %s spawn
 ERROR_POINT_NOTFOUND = Error: spawn point not found.
-ERROR_SAVE_SPAWNSFLIE = Error: failed to write spawns config.
+ERROR_SAVE_SPAWNS_FILE = Error: failed to write spawns config.
 
 [bp]
 ON = ON
@@ -66,7 +66,7 @@ MSG_AUTO_REMOVE_SPAWN = Remover um spawn point %s com defeito automaticamente.
 MSG_CHECK_FAULT = Aviso: Local inseguro.
 MSG_AIM_SPAWN = %s spawn
 ERROR_POINT_NOTFOUND = Erro: Spawn nao encontrado.
-ERROR_SAVE_SPAWNSFLIE = Erro: Nao foi possivel salvar o arquivo de spawns.
+ERROR_SAVE_SPAWNS_FILE = Erro: Nao foi possivel salvar o arquivo de spawns.
 
 [cn]
 ON = 打开
@@ -101,7 +101,7 @@ MSG_AUTO_REMOVE_SPAWN = 自动清除一个 %s 出生死亡坏点.
 MSG_CHECK_FAULT = 注意: 非安全位置.
 MSG_AIM_SPAWN = %s 出生点
 ERROR_POINT_NOTFOUND = 错误: 无法定位出生点.
-ERROR_SAVE_SPAWNSFLIE = 错误: 无法保存出生点文件.
+ERROR_SAVE_SPAWNS_FILE = 错误: 无法保存出生点文件.
 
 [cs]
 ON = Zapnout
@@ -136,7 +136,7 @@ MSG_AUTO_REMOVE_SPAWN = Automaticky smaz %s spatne spawny.
 MSG_CHECK_FAULT = Upozorneni: Nebezpecne umisteni.
 MSG_AIM_SPAWN = %s spawn
 ERROR_POINT_NOTFOUND = Chyba: Nemohu nalezt umisteni lokace.
-ERROR_SAVE_SPAWNSFLIE = Chyba: Nemohu ulozit spawny.
+ERROR_SAVE_SPAWNS_FILE = Chyba: Nemohu ulozit spawny.
 
 [cz]
 ON = Zapnuto
@@ -171,7 +171,7 @@ MSG_AUTO_REMOVE_SPAWN = Automaticky oddelan %s spawn point.
 MSG_CHECK_FAULT = Notice: Nebezpecna pozice.
 MSG_AIM_SPAWN = %s spawn
 ERROR_POINT_NOTFOUND = Error: Nemuzu pozicovat spawn point.
-ERROR_SAVE_SPAWNSFLIE = Error: Nemuzu ulozit do souboru.
+ERROR_SAVE_SPAWNS_FILE = Error: Nemuzu ulozit do souboru.
 
 [de]
 ON = AN
@@ -206,7 +206,7 @@ MSG_AUTO_REMOVE_SPAWN = Selbststaendiges entfernen eines %s ungueltigen Spawnpun
 MSG_CHECK_FAULT = Achtung: Unsichere Stelle.
 MSG_AIM_SPAWN = %s Spawnpunkt
 ERROR_POINT_NOTFOUND = Fehler: Kann Spawnpunkt nicht finden.
-ERROR_SAVE_SPAWNSFLIE = Fehler: Kann Spawnpunktedatei nicht speichern.
+ERROR_SAVE_SPAWNS_FILE = Fehler: Kann Spawnpunktedatei nicht speichern.
 
 [es]
 ON = ON
@@ -241,7 +241,7 @@ MSG_AUTO_REMOVE_SPAWN = Auto-Eliminar un Puntos de Spawns %s Incorrectos.
 MSG_CHECK_FAULT = Info: Posicion No Segura para Spawn.
 MSG_AIM_SPAWN = Spawn de %s
 ERROR_POINT_NOTFOUND = Error: Imposible ubicar Punto de Spawn.
-ERROR_SAVE_SPAWNSFLIE = Error: Imposible Guardar Archivo de Spawns.
+ERROR_SAVE_SPAWNS_FILE = Error: Imposible Guardar Archivo de Spawns.
 
 [fr]
 ON = ON
@@ -276,7 +276,7 @@ MSG_AUTO_REMOVE_SPAWN = Mauvais point de spawn %s supprime automatiquement
 MSG_CHECK_FAULT = Notice: Attention: Position non valide.
 MSG_AIM_SPAWN = spawn %s
 ERROR_POINT_NOTFOUND = Erreur: Impossible de localiser de point de spawn.
-ERROR_SAVE_SPAWNSFLIE = Erreur: Impossible de sauvegarder les points de spawn dans le fichier.
+ERROR_SAVE_SPAWNS_FILE = Erreur: Impossible de sauvegarder les points de spawn dans le fichier.
 
 [nl]
 ON = Aan
@@ -311,7 +311,7 @@ MSG_AUTO_REMOVE_SPAWN = Auto verwijderen van een %s corrupt spawn punt.
 MSG_CHECK_FAULT = Let Op: Onveilige locatie.
 MSG_AIM_SPAWN = %s spawn punt
 ERROR_POINT_NOTFOUND = Error: Kan spawn punt niet vinden.
-ERROR_SAVE_SPAWNSFLIE = Error: Kan spawn bestand niet opslaan.
+ERROR_SAVE_SPAWNS_FILE = Error: Kan spawn bestand niet opslaan.
 
 [pl]
 ON = ON
@@ -346,7 +346,7 @@ MSG_AUTO_REMOVE_SPAWN = Automatyczne usuniecie %s zlych spawn'ow.
 MSG_CHECK_FAULT = Uwaga: Niezapisana lokalizacja.
 MSG_AIM_SPAWN = %s spawn
 ERROR_POINT_NOTFOUND = Blad: Niewybrales spawn'a.
-ERROR_SAVE_SPAWNSFLIE = Blad: Niemozna zapisac pliku ze spawn'ami.
+ERROR_SAVE_SPAWNS_FILE = Blad: Niemozna zapisac pliku ze spawn'ami.
 
 [ro]
 ON = PORNIT
@@ -381,7 +381,7 @@ MSG_AUTO_REMOVE_SPAWN = Auto-sters un %s spawn gresit.
 MSG_CHECK_FAULT = Atentie: locatie nesigura.
 MSG_AIM_SPAWN = %s spawn
 ERROR_POINT_NOTFOUND = Eroare: Nu s-a gasit fisierul cu spawn-uri.
-ERROR_SAVE_SPAWNSFLIE = Eroare: Nu s-au putut salva spawn-urile.
+ERROR_SAVE_SPAWNS_FILE = Eroare: Nu s-au putut salva spawn-urile.
 
 [ru]
 ON = ВКЛ
@@ -416,7 +416,7 @@ MSG_AUTO_REMOVE_SPAWN = Авто-удален опасный спаун %s.
 MSG_CHECK_FAULT = Ошибка: эта позиция слишком близко к другим спаунам или объектам.
 MSG_AIM_SPAWN = %s спаун
 ERROR_POINT_NOTFOUND = Ошибка: спаун не найден.
-ERROR_SAVE_SPAWNSFLIE = Ошибка: не удалось сохранить конфиг.
+ERROR_SAVE_SPAWNS_FILE = Ошибка: не удалось сохранить конфиг.
 
 [sk]
 ON = Zapnute
@@ -451,7 +451,7 @@ MSG_AUTO_REMOVE_SPAWN = Automaticky zmazany %s spawn point.
 MSG_CHECK_FAULT = Poznamka: Nebezpecna pozicia.
 MSG_AIM_SPAWN = %s spawn
 ERROR_POINT_NOTFOUND = Chyba: Nemozno pozicovat spawn point.
-ERROR_SAVE_SPAWNSFLIE = Chyba: Config spawn pointov nemozno ulozit do suboru.
+ERROR_SAVE_SPAWNS_FILE = Chyba: Config spawn pointov nemozno ulozit do suboru.
 
 [sv]
 ON = PA
@@ -486,4 +486,4 @@ MSG_AUTO_REMOVE_SPAWN = Auto ta bort en %s dalig spawn po'a'ng.
 MSG_CHECK_FAULT = Notice: Os'a'kra platser.
 MSG_AIM_SPAWN = %s spawn
 ERROR_POINT_NOTFOUND = Error: Kunde inte plats spawn point.
-ERROR_SAVE_SPAWNSFLIE = Error: Kunde inte spara leka akt.
+ERROR_SAVE_SPAWNS_FILE = Error: Kunde inte spara leka akt.

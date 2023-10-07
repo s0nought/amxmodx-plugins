@@ -344,7 +344,7 @@ public m_MainHandler(id, menu, item)
             client_cmd(id,"spk buttons/blip2")
             client_print(0,print_chat,">> %L (T=%d,CT=%d)",id,"MSG_SAVE_SPAWNS_FILE",g_EditT,g_EditCT)
          }else
-            client_print(0,print_chat,">> %L",id,"ERROR_SAVE_SPAWNSFLIE")
+            client_print(0,print_chat,">> %L",id,"ERROR_SAVE_SPAWNS_FILE")
       }
       case 12:{ // Safe Range Check
          g_CheckDistance = g_CheckDistance ? false:true
