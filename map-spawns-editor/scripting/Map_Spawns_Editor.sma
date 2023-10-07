@@ -388,7 +388,7 @@ public m_MainHandler(id, menu, item)
       case 17:{ // Expotr Spawn To ENT Format
          if (Export_RipentFormatFile()){
             client_cmd(id,"spk buttons/blip2")
-            client_print(0,print_chat,">> %L [%s] (T=%d,CT=%d)",id,"MSG_EXOPRT_SPAWNSFLIE",g_EntFile,g_EditT,g_EditCT)
+            client_print(0,print_chat,">> %L [%s] (T=%d,CT=%d)",id,"MSG_EXPORT_SPAWNS_FILE",g_EntFile,g_EditT,g_EditCT)
          }
       }
    }
