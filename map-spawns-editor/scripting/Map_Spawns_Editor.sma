@@ -342,7 +342,7 @@ public m_MainHandler(id, menu, item)
          if (Save_SpawnsFile()){
             Load_SpawnFlie(0)
             client_cmd(id,"spk buttons/blip2")
-            client_print(0,print_chat,">> %L (T=%d,CT=%d)",id,"MSG_SAVE_SPAWNSFLIE",g_EditT,g_EditCT)
+            client_print(0,print_chat,">> %L (T=%d,CT=%d)",id,"MSG_SAVE_SPAWNS_FILE",g_EditT,g_EditCT)
          }else
             client_print(0,print_chat,">> %L",id,"ERROR_SAVE_SPAWNSFLIE")
       }
