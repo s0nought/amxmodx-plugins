@@ -16,7 +16,7 @@
 #define CHECKTIMER   0.8
 #define CHECKTASKID  666
 #define RESETENTITYTASKID 777
-#define SAFEp2p 85 // point to point safe distance
+#define SAFEp2p 100 // point to point safe distance
 #define SAFEp2w 40 // point to wall safe distance
 
 #define EDIT_CLASSNAME "Map_Spawns_Editor"
