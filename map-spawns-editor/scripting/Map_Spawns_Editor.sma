@@ -16,7 +16,6 @@
 #define CHECKTIMER   0.8
 #define CHECKTASKID  666
 #define RESETENTITYTASKID 777
-#define SAFEp2w 40 // point to wall safe distance
 
 #define EDIT_CLASSNAME "Map_Spawns_Editor"
 
@@ -24,6 +23,7 @@
 #define SPAWN_ABOVE_OFFSET   115
 
 new g_Cvar_SafeP2PDist
+new g_Cvar_SafeP2WDist
 
 // store filename
 new g_SpawnFile[256], g_DieFile[256], g_EntFile[256]
@@ -67,6 +67,9 @@ public plugin_init()
 
     // min distance between neighbouring points to consider them safe
     g_Cvar_SafeP2PDist = register_cvar("amx_mse_safe_p2p", "100")
+
+    // min distance between a world object and a spawn to consider latter one safe
+    g_Cvar_SafeP2WDist = register_cvar("amx_mse_safe_p2w", "40")
 }
 
 
@@ -615,21 +618,23 @@ stock SafeRangeCheck(id,offset)
     fOrigin[2] += offset // hight offset,same as Edit Point offset
     entity_get_vector(id, EV_VEC_angles, fAngles)
 
+    new iSafeP2W = get_pcvar_num(g_Cvar_SafeP2WDist)
+
     for (new i=0;i<360;i+=10)
     {
         fAngles[1] = float(i)
         // get the id infront point for trace_line
-        Vector_By_Angle(fOrigin,fAngles, SAFEp2w * 2.0, 1, inFrontPoint)
+        Vector_By_Angle(fOrigin,fAngles, iSafeP2W * 2.0, 1, inFrontPoint)
 
         // check id nearby wall
         trace_line(-1,fOrigin,inFrontPoint,HitPoint)
         new distance = floatround(vector_distance(fOrigin, HitPoint))
 
-        if (distance<SAFEp2w){ // unsafe distance to wall
+        if (distance < iSafeP2W){ // unsafe distance to wall
             Make_TE_BEAMPOINTS(id,0,fOrigin,HitPoint,2,255)
             safepostion = 0
         }
-        else if (distance < SAFEp2w * 1.5)
+        else if (distance < iSafeP2W * 1.5)
             Make_TE_BEAMPOINTS(id,2,fOrigin,HitPoint,2,255)
     }
 
