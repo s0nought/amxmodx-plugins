@@ -662,8 +662,6 @@ stock Get_Edit_Point_By_Aim(id)
     for(new Float:i=0.0;i<=1000.0;i+=20.0)
     {
         Vector_By_Angle(fOrigin,vAngles,i,1,vecReturn)
-        //Make_TE_BEAMPOINTS(id,3,fOrigin,vecReturn,5,255)
-        //client_print(0,print_chat,"fOrigin={%d,%d,%d},vecReturn={%d,%d,%d}",floatround(fOrigin[0]),floatround(fOrigin[1]),floatround(fOrigin[2]),floatround(vecReturn[0]),floatround(vecReturn[1]),floatround(vecReturn[2]))
 
         find_sphere_class(0,EDIT_CLASSNAME, 20.0, entList, 1, vecReturn)
         if (entList[0]){
