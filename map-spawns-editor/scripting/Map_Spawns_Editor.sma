@@ -16,13 +16,14 @@
 #define CHECKTIMER   0.8
 #define CHECKTASKID  666
 #define RESETENTITYTASKID 777
-#define SAFEp2p 100 // point to point safe distance
 #define SAFEp2w 40 // point to wall safe distance
 
 #define EDIT_CLASSNAME "Map_Spawns_Editor"
 
 #define SPAWN_PRESENT_OFFSET 10
 #define SPAWN_ABOVE_OFFSET   115
+
+new g_Cvar_SafeP2PDist
 
 // store filename
 new g_SpawnFile[256], g_DieFile[256], g_EntFile[256]
@@ -63,6 +64,9 @@ public plugin_init()
 
     register_clcmd("amx_spawn_editor", "editor_onoff", REQUIRED_ADMIN_LEVEL, "- 1/0 switch editor function on/off")
     register_clcmd("amx_editor_menu", "editor_menu", REQUIRED_ADMIN_LEVEL, "- open editor menu")
+
+    // min distance between neighbouring points to consider them safe
+    g_Cvar_SafeP2PDist = register_cvar("amx_mse_safe_p2p", "100")
 }
 
 
@@ -632,12 +636,15 @@ stock SafeRangeCheck(id,offset)
     // check id nearby Edit Points
     new entList[10],Float:vDistance
     new Float:entity_origin[3]
-    find_sphere_class(0,EDIT_CLASSNAME, SAFEp2p * 1.5, entList, 9, fOrigin)
+    new iSafeP2P = get_pcvar_num(g_Cvar_SafeP2PDist)
+
+    find_sphere_class(0,EDIT_CLASSNAME, iSafeP2P * 1.5, entList, 9, fOrigin)
+
     for(new i=0;i<10;i++){
         if (entList[i]){
             entity_get_vector(entList[i], EV_VEC_origin, entity_origin)
             vDistance = vector_distance(fOrigin,entity_origin)
-            if (vDistance < SAFEp2p){ // unsafe location to Edit Points
+            if (vDistance < iSafeP2P){ // unsafe location to Edit Points
                 Make_TE_BEAMPOINTS(id,0,fOrigin,entity_origin,5,255)
                 entity_set_int(entList[i], EV_INT_sequence, 64)
                 safepostion = 0
@@ -647,6 +654,7 @@ stock SafeRangeCheck(id,offset)
             } else Make_TE_BEAMPOINTS(id,1,fOrigin,entity_origin,5,255)
         }
     }
+
     return safepostion
 }
 
