@@ -778,11 +778,11 @@ stock Point_WriteToFlie(Flie[],team,entity,saveformat)
     else if (saveformat==2){ // write for ripent.exe format
         if (team==1) sTeam = "info_player_deathmatch"
         else sTeam = "info_player_start"
-        format(line, 127,"{^n  ^"classname^" ^"%s^"",sTeam)
+        format(line, 127,"{^n^"classname^" ^"%s^"",sTeam)
         write_file(Flie, line , -1)
-        format(line, 127, "  ^"origin^" ^"%d %d %d^"", nOrigin[0], nOrigin[1], nOrigin[2])
+        format(line, 127, "^"origin^" ^"%d %d %d^"", nOrigin[0], nOrigin[1], nOrigin[2])
         write_file(Flie, line, -1)
-        format(line, 127, "  ^"angles^" ^"0 %d 0^"^n}^n", nAngles[1])
+        format(line, 127, "^"angles^" ^"0 %d 0^"^n}", nAngles[1])
         write_file(Flie, line, -1)
     }
 }
