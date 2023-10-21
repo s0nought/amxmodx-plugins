@@ -24,6 +24,7 @@
 
 new g_Cvar_SafeP2PDist
 new g_Cvar_SafeP2WDist
+new g_Cvar_RotationAngle
 
 // store filename
 new g_SpawnFile[256], g_DieFile[256], g_EntFile[256]
@@ -70,6 +71,9 @@ public plugin_init()
 
     // min distance between a world object and a spawn to consider latter one safe
     g_Cvar_SafeP2WDist = register_cvar("amx_mse_safe_p2w", "40")
+
+    // rotation angle to rotate spawns clockwise and counterclockwise
+    g_Cvar_RotationAngle = register_cvar("amx_mse_rotation_angle", "30")
 }
 
 
@@ -227,7 +231,9 @@ public m_MainHandler(id, menu, item)
     new access, callback 
     menu_item_getinfo(menu, item, access, cmd,5, iName, 63, callback) 
     new iChoice = str_to_num(cmd) 
-    
+
+    new iRotationAngle = get_pcvar_num(g_Cvar_RotationAngle)
+
     switch(iChoice)
     {
         case 2:{ // Location Set
@@ -265,7 +271,7 @@ public m_MainHandler(id, menu, item)
         case 5:{ // Spawn Turn Left
             new entity = Get_Edit_Point_By_Aim(id)
             if (entity && is_valid_ent(entity)){
-                Entity_Turn_angle(entity,10)
+                Entity_Turn_angle(entity, iRotationAngle)
                 client_cmd(id,"spk buttons/blip1")
             }else{
                 client_cmd(id,"spk buttons/button2")
@@ -275,7 +281,7 @@ public m_MainHandler(id, menu, item)
         case 6:{ // Spawn Turn Right
             new entity = Get_Edit_Point_By_Aim(id)
             if (entity && is_valid_ent(entity)){
-                Entity_Turn_angle(entity,-10)
+                Entity_Turn_angle(entity, iRotationAngle * -1)
                 client_cmd(id,"spk buttons/blip1")
             }else{
                 client_cmd(id,"spk buttons/button2")
