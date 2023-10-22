@@ -19,12 +19,10 @@
 
 #define EDIT_CLASSNAME "Map_Spawns_Editor"
 
-#define SPAWN_PRESENT_OFFSET 10
-#define SPAWN_ABOVE_OFFSET   115
-
 new g_Cvar_SafeP2PDist
 new g_Cvar_SafeP2WDist
 new g_Cvar_RotationAngle
+new g_Cvar_ZOffset
 
 // store filename
 new g_SpawnFile[256], g_DieFile[256], g_EntFile[256]
@@ -38,9 +36,6 @@ new bool:g_LoadSuccessed = false
 new bool:g_LoadInit = false
 
 new bool:g_CheckDistance = true
-
-new bool:g_AbovePlayer = false
-new g_OffSet = SPAWN_PRESENT_OFFSET
 
 /*
 * 1 - T
@@ -81,6 +76,9 @@ public plugin_init()
 
     // rotation angle to rotate spawns clockwise and counterclockwise
     g_Cvar_RotationAngle = register_cvar("amx_mse_rotation_angle", "30")
+
+    // Z offset to apply when creating spawns
+    g_Cvar_ZOffset = register_cvar("amx_mse_z_offset", "28")
 
     register_clcmd("amx_mse_menu", "mse_menu", REQUIRED_ADMIN_LEVEL, "Map Spawns Editor menu")
 }
@@ -271,6 +269,7 @@ public mse_menu_handler(id, menu, item)
     }
 
     new iRotationAngle = get_pcvar_num(g_Cvar_RotationAngle)
+    new iZOffset = get_pcvar_num(g_Cvar_ZOffset)
 
     // to store item's data
     new nItemAccessLevel, nItemCallbackID
@@ -293,7 +292,7 @@ public mse_menu_handler(id, menu, item)
         }
         case 3:
         {
-            if (g_CheckDistance && !SafeRangeCheck(id, g_OffSet))
+            if (g_CheckDistance && !SafeRangeCheck(id, iZOffset))
             {
                 client_cmd(id, "spk buttons/button2")
 
@@ -301,7 +300,7 @@ public mse_menu_handler(id, menu, item)
             }
             else
             {
-                if (CreateEditEntity(g_nActiveEntType, id, g_OffSet) == 1)
+                if (CreateEditEntity(g_nActiveEntType, id, iZOffset) == 1)
                 {
                     g_bSpawnsChanged = true
 
@@ -309,7 +308,7 @@ public mse_menu_handler(id, menu, item)
 
                     client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "T")
                 }
-                else if (CreateEditEntity(g_nActiveEntType, id, g_OffSet) == 2)
+                else if (CreateEditEntity(g_nActiveEntType, id, iZOffset) == 2)
                 {
                     g_bSpawnsChanged = true
 
@@ -714,8 +713,11 @@ stock Spawns_Count()
 }
 
 public check_Task(taskid){
-    SafeRangeCheck(taskid-CHECKTASKID,SPAWN_PRESENT_OFFSET)
-    Get_Edit_Point_By_Aim(taskid-CHECKTASKID)
+    new iZOffset = get_pcvar_num(g_Cvar_ZOffset)
+
+    SafeRangeCheck(taskid - CHECKTASKID, iZOffset)
+
+    Get_Edit_Point_By_Aim(taskid - CHECKTASKID)
 }
 
 
