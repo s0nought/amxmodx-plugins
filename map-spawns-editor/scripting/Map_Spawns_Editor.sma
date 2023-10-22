@@ -29,7 +29,9 @@ new g_Cvar_RotationAngle
 // store filename
 new g_SpawnFile[256], g_DieFile[256], g_EntFile[256]
 
-new g_MainMenuID = -1 // Menu Handel ID
+new g_nMSEMenuID = -1
+
+new bool:g_bSpawnsChanged = false
 
 new bool:g_DeathCheck_end = false
 new bool:g_LoadSuccessed = false
@@ -39,6 +41,12 @@ new bool:g_CheckDistance = true
 
 new bool:g_AbovePlayer = false
 new g_OffSet = SPAWN_PRESENT_OFFSET
+
+/*
+* 1 - T
+* 2 - CT
+*/
+new g_nActiveEntType = 1
 
 new g_Editing
 new g_SpawnT, g_EditT
@@ -64,7 +72,6 @@ public plugin_init()
     register_event("HLTV", "event_newround", "a", "1=0", "2=0")
 
     register_clcmd("amx_spawn_editor", "editor_onoff", REQUIRED_ADMIN_LEVEL, "- 1/0 switch editor function on/off")
-    register_clcmd("amx_editor_menu", "editor_menu", REQUIRED_ADMIN_LEVEL, "- open editor menu")
 
     // min distance between neighbouring points to consider them safe
     g_Cvar_SafeP2PDist = register_cvar("amx_mse_safe_p2p", "100")
@@ -74,6 +81,8 @@ public plugin_init()
 
     // rotation angle to rotate spawns clockwise and counterclockwise
     g_Cvar_RotationAngle = register_cvar("amx_mse_rotation_angle", "30")
+
+    register_clcmd("amx_mse_menu", "mse_menu", REQUIRED_ADMIN_LEVEL, "Map Spawns Editor menu")
 }
 
 
@@ -104,249 +113,368 @@ public editor_onoff(id,level,cid)
 }
 
 
-public editor_menu(id,level,cid)
+// Menu 2.0
+
+public mse_menu(id, level, cid)
 {
-    if (!cmd_access(id,level,cid,1))
-        return PLUGIN_HANDLED
-
-    if (!g_Editing){
-        client_print(id,print_chat,"* %L",id,"MSG_FUNCTION_DISABLED")
+    if (!cmd_access(id, level, cid, 1))
+    {
         return PLUGIN_HANDLED
     }
 
-    if (g_Editing!=id){
-        client_print(id,print_chat,"* %L",id,"MSG_ALREADY_INUSE")
+    if (!g_Editing)
+    {
+        client_print(id, print_chat, "%L", id, "MSG_FUNCTION_DISABLED")
         return PLUGIN_HANDLED
     }
 
-    new tempString[101]
-    format(tempString,100,"%L",id,"MENU_TITLE")
-    g_MainMenuID = menu_create(tempString, "m_MainHandler")
-    new callbackMenu = menu_makecallback("c_Main")
+    if (g_Editing != id)
+    {
+        client_print(id, print_chat, "%L", id, "MSG_ALREADY_INUSE")
+        return PLUGIN_HANDLED
+    }
 
-// page 1
-    menu_additem(g_MainMenuID, "[Spawns Info]","1", 1, callbackMenu)
-    menu_addblank(g_MainMenuID, 0)
+    new sItemText[101]
 
-    menu_additem(g_MainMenuID, "[Add spawn locate: present/above player]","2", 0, callbackMenu)
-    format(tempString,100,"%L",id,"MENU_ADD_SPAWN","T")
-    menu_additem(g_MainMenuID, tempString,"3", 0, callbackMenu)
-    format(tempString,100,"%L",id,"MENU_ADD_SPAWN","CT")
-    menu_additem(g_MainMenuID, tempString,"4", 0, callbackMenu)
-    menu_addblank(g_MainMenuID, 0)
+    // title
 
-    format(tempString,100,"\y%L",id,"MENU_TURN_LEFT")
-    menu_additem(g_MainMenuID, tempString,"5", 0, callbackMenu)
-    format(tempString,100,"\y%L",id,"MENU_TURN_RIGHT")
-    menu_additem(g_MainMenuID, tempString,"6", 0, callbackMenu)
-    menu_addblank(g_MainMenuID, 0)
+    format(sItemText, 100, "%L", id, "MENU_TITLE")
+    g_nMSEMenuID = menu_create(sItemText, "mse_menu_handler")
 
-    format(tempString,100,"%L",id,"MENU_SAVE_ALL_SPAWNS")
-    menu_additem(g_MainMenuID, tempString,"7", 0, callbackMenu)
-    menu_addblank(g_MainMenuID, 0)
-// page 1 end
+    new cbMenu = menu_makecallback("mse_menu_callback")
 
-// page 2
-    menu_additem(g_MainMenuID, "[Spawns Info]","11", 1, callbackMenu)
-    menu_addblank(g_MainMenuID, 0)
+    // menu_addblank's cause problems, I'm going with ^n for vertical spacers
 
-    menu_additem(g_MainMenuID, "[Safe range check on/off]","12", 0, callbackMenu)
-    format(tempString,100,"%L",id,"MENU_CLEAR_SPAWN")
-    menu_additem(g_MainMenuID, tempString,"13", 0, callbackMenu)
-    menu_addblank(g_MainMenuID, 0)
+    // page 1
 
-    format(tempString,100,"%L",id,"MENU_CLEAR_ALL_T_SPAWNS")
-    menu_additem(g_MainMenuID, tempString,"14", 0, callbackMenu)
-    format(tempString,100,"%L",id,"MENU_CLEAR_ALL_CT_SPAWNS")
-    menu_additem(g_MainMenuID, tempString,"15", 0, callbackMenu)
+    menu_additem(g_nMSEMenuID, "[Spawns Count]", "1", 0, cbMenu)
+    menu_additem(g_nMSEMenuID, "[Spawn Type]^n", "2", 0, cbMenu)
 
-    format(tempString,100,"%L",id,"MENU_DEL_SPAWNS_FILE")
-    menu_additem(g_MainMenuID, tempString,"16", 0, callbackMenu)
+    menu_additem(g_nMSEMenuID, "Add^n", "3", 0, cbMenu)
 
-    format(tempString,100,"%L",id,"MENU_EXPORT_FOR_RIPENT")
-    menu_additem(g_MainMenuID, tempString,"17", 0, callbackMenu)
-    menu_addblank(g_MainMenuID, 0)
-// page 2 end
+    format(sItemText, 100, "%L", id, "MENU_TURN_LEFT")
+    menu_additem(g_nMSEMenuID, sItemText, "4", 0, -1)
 
-    format(tempString,100,"%L",id,"MENU_EXIT")
-    menu_setprop(g_MainMenuID, MPROP_EXITNAME, tempString)
-    format(tempString,100,"%L",id,"MENU_NEXT")
-    menu_setprop(g_MainMenuID, MPROP_NEXTNAME, tempString)
-    format(tempString,100,"%L",id,"MENU_BACK")
-    menu_setprop(g_MainMenuID, MPROP_BACKNAME, tempString)
+    format(sItemText, 100, "%L^n", id, "MENU_TURN_RIGHT")
+    menu_additem(g_nMSEMenuID, sItemText, "5", 0, -1)
 
-    menu_setprop(g_MainMenuID, MPROP_EXIT, MEXIT_ALL)
-    menu_display (id,g_MainMenuID,0)
+    format(sItemText, 100, "%L^n", id, "MENU_CLEAR_SPAWN")
+    menu_additem(g_nMSEMenuID, sItemText, "6", 0, cbMenu)
 
-    client_cmd(id,"spk buttons/button9")
-    set_task(CHECKTIMER,"check_Task",id+CHECKTASKID,_,_,"b")
+    menu_additem(g_nMSEMenuID, "[Save Spawns to File]", "7", 0, cbMenu)
 
-    return PLUGIN_HANDLED 
+    // page 2
+
+    menu_additem(g_nMSEMenuID, "[Spawns Count]", "8", 0, cbMenu)
+    menu_additem(g_nMSEMenuID, "[Spawn Type]^n", "9", 0, cbMenu)
+
+    menu_additem(g_nMSEMenuID, "Delete ALL^n", "10", 0, cbMenu)
+
+    format(sItemText, 100, "\r%L", id, "MENU_DEL_SPAWNS_FILE")
+    menu_additem(g_nMSEMenuID, sItemText, "11", 0, -1)
+    format(sItemText, 100, "\y%L^n^n^n", id, "MENU_EXPORT_FOR_RIPENT")
+    menu_additem(g_nMSEMenuID, sItemText, "12", 0, -1)
+
+    // controls
+
+    format(sItemText, 100, "\r%L", id, "MENU_EXIT")
+    menu_setprop(g_nMSEMenuID, MPROP_EXITNAME, sItemText)
+    format(sItemText, 100, "\y%L", id, "MENU_NEXT")
+    menu_setprop(g_nMSEMenuID, MPROP_NEXTNAME, sItemText)
+    format(sItemText, 100, "\y%L", id, "MENU_BACK")
+    menu_setprop(g_nMSEMenuID, MPROP_BACKNAME, sItemText)
+    menu_setprop(g_nMSEMenuID, MPROP_EXIT, MEXIT_ALL)
+
+    menu_display(id, g_nMSEMenuID, 0)
+
+    set_task(CHECKTIMER, "check_Task", id + CHECKTASKID, _, _, "b")
+
+    return PLUGIN_HANDLED
 }
 
 
-public c_Main(id, menu, item)
+public mse_menu_callback(id, menu, item)
 {
-    if (item < 0) return PLUGIN_CONTINUE
+    if (item < 0)
+    {
+        return PLUGIN_CONTINUE
+    }
 
-    new cmd[6], fItem[256], iName[64]
-    new access, callback
-    menu_item_getinfo(menu, item, access, cmd, 5, iName, 63, callback)
-    new num = str_to_num(cmd)
+    // to store item's data
+    new nItemAccessLevel, nItemCallbackID
+    new sItemInfo[6], sItemCurText[101], sItemNewText[101]
 
-    if (num==1 || num==11){
-        if (g_EditT!=g_SpawnT || g_EditCT!=g_SpawnCT)
-            format(fItem,255,"%L ( T=%d + CT=%d ) ^n0.\y %L \r( T=%d + CT=%d ) ^n>> %L", id, "MENU_ORIGIN_SPAWNS",g_SpawnT,g_SpawnCT, id,"MENU_EDIT_SPAWNS", g_EditT,g_EditCT, id,"MENU_NOTICE_SAVE")
-        else format(fItem,255,"%L ( T=%d + CT=%d ) ^n0.\y %L ( T=%d + CT=%d )", id, "MENU_ORIGIN_SPAWNS",g_SpawnT,g_SpawnCT, id,"MENU_EDIT_SPAWNS", g_EditT,g_EditCT)
-        menu_item_setname(menu, item, fItem )
+    menu_item_getinfo(menu, item, nItemAccessLevel, sItemInfo, 5, sItemCurText, 100, nItemCallbackID)
+
+    new nItemInfo = str_to_num(sItemInfo)
+
+    if (nItemInfo == 1 || nItemInfo == 8)
+    {
+        format(sItemNewText, 100, "\wT: %d -> \y%d\w | CT: %d -> \y%d\w", g_SpawnT, g_EditT, g_SpawnCT, g_EditCT)
+
+        menu_item_setname(menu, item, sItemNewText)
+
         return ITEM_DISABLED
     }
-    switch (num){
-        case 2:{
-            if (g_AbovePlayer)
-                format(fItem,255,"\y%L ->\r %L",id,"MENU_ADD_LOCATION",id,"MENU_LOCATION_ABOVE")
-            else format(fItem,255,"\y%L ->\r %L",id,"MENU_ADD_LOCATION",id,"MENU_LOCATION_CURRENT")
-            menu_item_setname(menu, item, fItem ) 
+    else if (nItemInfo == 2 || nItemInfo == 9)
+    {
+        new sEntType[4]
+
+        switch (g_nActiveEntType)
+        {
+            case 1:
+            {
+                format(sEntType, 3, "T")
+            }
+            case 2:
+            {
+                format(sEntType, 3, "CT")
+            }
         }
-        case 12:{
-            if (g_CheckDistance)
-                format(fItem,255,"\y%L ->\r %L",id,"MENU_SAFE_CHECK",id,"ON")
-            else format(fItem,255,"\y%L ->\r %L",id,"MENU_SAFE_CHECK",id,"OFF")
-            menu_item_setname(menu, item, fItem ) 
+
+        format(sItemNewText, 100, "%s^n", sEntType)
+
+        menu_item_setname(menu, item, sItemNewText)
+    }
+    else if (nItemInfo == 7)
+    {
+        if (g_bSpawnsChanged)
+        {
+            format(sItemNewText, 100, "\r%L^n", id, "MENU_SAVE_ALL_SPAWNS")
+
+            menu_item_setname(menu, 6, sItemNewText)
+        }
+        else
+        {
+            format(sItemNewText, 100, "\y%L^n", id, "MENU_SAVE_ALL_SPAWNS")
+
+            menu_item_setname(menu, 6, sItemNewText)
         }
     }
-    return ITEM_ENABLED 
+
+    return PLUGIN_CONTINUE
 }
 
 
-public m_MainHandler(id, menu, item)
+public mse_menu_handler(id, menu, item)
 {
-    if (item==MENU_EXIT || !g_Editing){
-        if (task_exists(id+CHECKTASKID)) remove_task(id+CHECKTASKID)
-        menu_destroy(g_MainMenuID)
+    if (item == MENU_EXIT || !g_Editing)
+    {
+        if (task_exists(id + CHECKTASKID))
+        {
+            remove_task(id + CHECKTASKID)
+        }
+
+        menu_destroy(g_nMSEMenuID)
+
         return PLUGIN_HANDLED
     }
-
-    new cmd[6], iName[64] 
-    new access, callback 
-    menu_item_getinfo(menu, item, access, cmd,5, iName, 63, callback) 
-    new iChoice = str_to_num(cmd) 
 
     new iRotationAngle = get_pcvar_num(g_Cvar_RotationAngle)
 
-    switch(iChoice)
+    // to store item's data
+    new nItemAccessLevel, nItemCallbackID
+    new sItemInfo[6], sItemCurText[101]
+
+    menu_item_getinfo(menu, item, nItemAccessLevel, sItemInfo, 5, sItemCurText, 100, nItemCallbackID)
+
+    new nItemInfo = str_to_num(sItemInfo)
+
+    switch (nItemInfo)
     {
-        case 2:{ // Location Set
-            if (g_AbovePlayer){
-                g_OffSet = SPAWN_PRESENT_OFFSET
-                g_AbovePlayer = false
-            }else{
-                g_OffSet = SPAWN_ABOVE_OFFSET
-                g_AbovePlayer = true
-            }
-            client_cmd(id,"spk buttons/button3")
-        }
-        case 3:{ // Add T Spawn
-            if (g_CheckDistance && !SafeRangeCheck(id,g_OffSet)){
-                client_cmd(id,"spk buttons/button2")
-                client_print(0,print_chat,">> %L",id,"MSG_CHECK_FAULT")
-            }
-            else if (CreateEditEntity(1,id,g_OffSet)==1){
-                g_EditT++
-                client_cmd(id,"spk buttons/button9")
-                client_print(0,print_chat,">> %L",id,"MENU_ADD_SPAWN","T")
+        case 2:
+        {
+            g_nActiveEntType++
+
+            if (g_nActiveEntType > 2)
+            {
+                g_nActiveEntType = 1
             }
         }
-        case 4:{ // Add CT Spawn
-            if (g_CheckDistance && !SafeRangeCheck(id,g_OffSet)){
-                client_cmd(id,"spk buttons/button2")
-                client_print(0,print_chat,">> %L",id,"MSG_CHECK_FAULT")
+        case 3:
+        {
+            if (g_CheckDistance && !SafeRangeCheck(id, g_OffSet))
+            {
+                client_cmd(id, "spk buttons/button2")
+
+                client_print(0, print_chat, ">> %L", id, "MSG_CHECK_FAULT")
             }
-            else if (CreateEditEntity(2,id,g_OffSet)==2){
-                g_EditCT++
-                client_cmd(id,"spk buttons/button9")
-                client_print(0,print_chat,">> %L",id,"MENU_ADD_SPAWN","CT")
-            }
-        }
-        case 5:{ // Spawn Turn Left
-            new entity = Get_Edit_Point_By_Aim(id)
-            if (entity && is_valid_ent(entity)){
-                Entity_Turn_angle(entity, iRotationAngle)
-                client_cmd(id,"spk buttons/blip1")
-            }else{
-                client_cmd(id,"spk buttons/button2")
-                client_print(0,print_chat,">> %L",id,"ERROR_POINT_NOTFOUND")
-            }
-        }
-        case 6:{ // Spawn Turn Right
-            new entity = Get_Edit_Point_By_Aim(id)
-            if (entity && is_valid_ent(entity)){
-                Entity_Turn_angle(entity, iRotationAngle * -1)
-                client_cmd(id,"spk buttons/blip1")
-            }else{
-                client_cmd(id,"spk buttons/button2")
-                client_print(0,print_chat,">> %L",id,"ERROR_POINT_NOTFOUND")
-            }
-        }
-        case 7:{ // Save All Spawn To File
-            if (Save_SpawnsFile()){
-                Load_SpawnFlie(0)
-                client_cmd(id,"spk buttons/blip2")
-                client_print(0,print_chat,">> %L (T=%d,CT=%d)",id,"MSG_SAVE_SPAWNS_FILE",g_EditT,g_EditCT)
-            }else
-                client_print(0,print_chat,">> %L",id,"ERROR_SAVE_SPAWNS_FILE")
-        }
-        case 12:{ // Safe Range Check
-            g_CheckDistance = g_CheckDistance ? false:true
-            client_cmd(id,"spk buttons/button3")
-        }
-        case 13:{ // Clear a Spawn
-            new entity = Get_Edit_Point_By_Aim(id)
-            if (entity && is_valid_ent(entity)){
-                new team = entity_get_int(entity,EV_INT_iuser2)
-                remove_entity(entity)
-                client_cmd(id,"spk buttons/button3")
-                if (team==1){
-                    g_EditT--
-                    client_print(0,print_chat,">> %L",id,"MSG_CLEAR_SPAWN","T")
-                }else{
-                    g_EditCT--
-                    client_print(0,print_chat,">> %L",id,"MSG_CLEAR_SPAWN","CT")
+            else
+            {
+                if (CreateEditEntity(g_nActiveEntType, id, g_OffSet) == 1)
+                {
+                    g_bSpawnsChanged = true
+
+                    g_EditT++
+
+                    client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "T")
                 }
-            }else{
-                client_cmd(id,"spk buttons/button2")
-                client_print(0,print_chat,">> %L",id,"ERROR_POINT_NOTFOUND")
+                else if (CreateEditEntity(g_nActiveEntType, id, g_OffSet) == 2)
+                {
+                    g_bSpawnsChanged = true
+
+                    g_EditCT++
+
+                    client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "CT")
+                }
+                
+                client_cmd(id, "spk buttons/button9")
             }
         }
-        case 14:{ // Clear All T Spawn
-            Clear_AllEdit(1)
-            client_cmd(id,"spk buttons/blip2")
-            client_print(0,print_chat,">> %L",id,"MENU_CLEAR_ALL_T_SPAWNS")
+        case 4:
+        {
+            new entity = Get_Edit_Point_By_Aim(id)
+
+            if (entity && is_valid_ent(entity))
+            {
+                g_bSpawnsChanged = true
+
+                Entity_Turn_angle(entity, iRotationAngle)
+
+                client_cmd(id, "spk buttons/blip1")
+            }
+            else
+            {
+                client_cmd(id, "spk buttons/button2")
+
+                client_print(0, print_chat, ">> %L", id, "ERROR_POINT_NOTFOUND")
+            }
         }
-        case 15:{ // Clear All CT Spawn
-            Clear_AllEdit(2)
-            client_cmd(id,"spk buttons/blip2")
-            client_print(0,print_chat,">> %L",id,"MENU_CLEAR_ALL_CT_SPAWNS")
+        case 5:
+        {
+            new entity = Get_Edit_Point_By_Aim(id)
+
+            if (entity && is_valid_ent(entity))
+            {
+                g_bSpawnsChanged = true
+
+                Entity_Turn_angle(entity, iRotationAngle * -1)
+
+                client_cmd(id, "spk buttons/blip1")
+            }
+            else
+            {
+                client_cmd(id, "spk buttons/button2")
+
+                client_print(0, print_chat, ">> %L", id, "ERROR_POINT_NOTFOUND")
+            }
         }
-        case 16:{ // Del Spawns Flie
-            if (file_exists(g_SpawnFile)){
+        case 6:
+        {
+            new entity = Get_Edit_Point_By_Aim(id)
+
+            if (entity && is_valid_ent(entity))
+            {
+                new team = entity_get_int(entity, EV_INT_iuser2)
+
+                remove_entity(entity)
+
+                client_cmd(id, "spk buttons/button3")
+
+                if (team == 1)
+                {
+                    g_bSpawnsChanged = true
+
+                    g_EditT--
+
+                    client_print(0, print_chat, ">> %L", id, "MSG_CLEAR_SPAWN", "T")
+                }
+                else if (team == 2)
+                {
+                    g_bSpawnsChanged = true
+
+                    g_EditCT--
+
+                    client_print(0, print_chat, ">> %L", id, "MSG_CLEAR_SPAWN", "CT")
+                }
+            }
+            else
+            {
+                client_cmd(id, "spk buttons/button2")
+
+                client_print(0, print_chat, ">> %L", id, "ERROR_POINT_NOTFOUND")
+            }
+        }
+        case 7:
+        {
+            if (Save_SpawnsFile())
+            {
+                g_bSpawnsChanged = false
+
+                Load_SpawnFlie(0)
+
+                client_cmd(id, "spk buttons/blip2")
+
+                client_print(0, print_chat, ">> %L (T=%d,CT=%d)", id, "MSG_SAVE_SPAWNS_FILE", g_EditT, g_EditCT)
+            }
+            else
+            {
+                client_print(0, print_chat, ">> %L", id, "ERROR_SAVE_SPAWNS_FILE")
+            }
+        }
+        case 9:
+        {
+            g_nActiveEntType++
+
+            if (g_nActiveEntType > 2)
+            {
+                g_nActiveEntType = 1
+            }
+        }
+        case 10:
+        {
+            Clear_AllEdit(g_nActiveEntType)
+
+            g_bSpawnsChanged = true
+
+            client_cmd(id, "spk buttons/blip2")
+
+            switch (g_nActiveEntType)
+            {
+                case 1:
+                {
+                    client_print(0, print_chat, ">> %L", id, "MENU_CLEAR_ALL_T_SPAWNS")
+                }
+                case 2:
+                {
+                    client_print(0, print_chat, ">> %L", id, "MENU_CLEAR_ALL_CT_SPAWNS")
+                }
+            }
+        }
+        case 11:
+        {
+            if (file_exists(g_SpawnFile))
+            {
                 delete_file(g_SpawnFile)
-                client_cmd(id,"spk buttons/blip2")
-                client_print(0,print_chat,">> %L",id,"MSG_DEL_SPAWNSFILE")
+
+                client_cmd(id, "spk buttons/blip2")
+
+                client_print(0, print_chat, ">> %L", id, "MSG_DEL_SPAWNSFILE")
             }
         }
-        case 17:{ // Expotr Spawn To ENT Format
-            if (Export_RipentFormatFile()){
-                client_cmd(id,"spk buttons/blip2")
-                client_print(0,print_chat,">> %L [%s] (T=%d,CT=%d)",id,"MSG_EXPORT_SPAWNS_FILE",g_EntFile,g_EditT,g_EditCT)
+        case 12:
+        {
+            if (Export_RipentFormatFile())
+            {
+                client_cmd(id, "spk buttons/blip2")
+
+                client_print(0, print_chat, ">> %L [%s] (T=%d,CT=%d)", id, "MSG_EXPORT_SPAWNS_FILE", g_EntFile, g_EditT, g_EditCT)
             }
         }
     }
 
-    if (iChoice>=11 && iChoice<=17)  // go back to second page is using
-        menu_display (id, g_MainMenuID, 1)
-    else menu_display (id, g_MainMenuID, 0)
-    return PLUGIN_CONTINUE 
+    // stay on the first page
+    if (nItemInfo >= 1 && nItemInfo <= 7)
+    {
+        menu_display(id, g_nMSEMenuID, 0)
+    }
+    // stay on the second page
+    else if (nItemInfo >= 8 && nItemInfo <= 12)
+    {
+        menu_display(id, g_nMSEMenuID, 1)
+    }
+
+    return PLUGIN_CONTINUE
 }
 
 
