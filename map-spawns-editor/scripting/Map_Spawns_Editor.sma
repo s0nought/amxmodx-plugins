@@ -300,21 +300,30 @@ public mse_menu_handler(id, menu, item)
             }
             else
             {
-                if (CreateEditEntity(g_nActiveEntType, id, iZOffset) == 1)
+                switch (g_nActiveEntType)
                 {
-                    g_bSpawnsChanged = true
+                    case 1:
+                    {
+                        if (CreateEditEntity(1, id, iZOffset) == 1)
+                        {
+                            g_bSpawnsChanged = true
 
-                    g_EditT++
+                            g_EditT++
 
-                    client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "T")
-                }
-                else if (CreateEditEntity(g_nActiveEntType, id, iZOffset) == 2)
-                {
-                    g_bSpawnsChanged = true
+                            client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "T")
+                        }
+                    }
+                    case 2:
+                    {
+                        if (CreateEditEntity(2, id, iZOffset) == 2)
+                        {
+                            g_bSpawnsChanged = true
 
-                    g_EditCT++
+                            g_EditCT++
 
-                    client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "CT")
+                            client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "CT")
+                        }
+                    }
                 }
                 
                 client_cmd(id, "spk buttons/button9")
