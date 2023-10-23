@@ -23,6 +23,7 @@ new g_Cvar_SafeP2PDist
 new g_Cvar_SafeP2WDist
 new g_Cvar_RotationAngle
 new g_Cvar_ZOffset
+new g_Cvar_UnsafeCheck
 
 // store filename
 new g_SpawnFile[256], g_DieFile[256], g_EntFile[256]
@@ -34,8 +35,6 @@ new bool:g_bSpawnsChanged = false
 new bool:g_DeathCheck_end = false
 new bool:g_LoadSuccessed = false
 new bool:g_LoadInit = false
-
-new bool:g_CheckDistance = true
 
 /*
 * 1 - T
@@ -79,6 +78,9 @@ public plugin_init()
 
     // Z offset to apply when creating spawns
     g_Cvar_ZOffset = register_cvar("amx_mse_z_offset", "28")
+
+    // a toggle to enable and disable unsafe position check
+    g_Cvar_UnsafeCheck = register_cvar("amx_mse_unsafe_check", "1")
 
     register_clcmd("amx_mse_menu", "mse_menu", REQUIRED_ADMIN_LEVEL, "Map Spawns Editor menu")
 }
@@ -270,6 +272,7 @@ public mse_menu_handler(id, menu, item)
 
     new iRotationAngle = get_pcvar_num(g_Cvar_RotationAngle)
     new iZOffset = get_pcvar_num(g_Cvar_ZOffset)
+    new iUnsafeCheck = get_pcvar_num(g_Cvar_UnsafeCheck)
 
     // to store item's data
     new nItemAccessLevel, nItemCallbackID
@@ -292,7 +295,7 @@ public mse_menu_handler(id, menu, item)
         }
         case 3:
         {
-            if (g_CheckDistance && !SafeRangeCheck(id, iZOffset))
+            if (iUnsafeCheck && !SafeRangeCheck(id, iZOffset))
             {
                 client_cmd(id, "spk buttons/button2")
 
