@@ -102,12 +102,12 @@ public editor_onoff(id,level,cid)
         Clear_AllEdit(0)
         Load_SpawnFlie(0)
         Spawns_To_Edit()
-        client_print(0,print_chat,">> %L - %L",id,"MENU_TITLE",id,"ON")
+        client_print(0,print_chat,">> %L - %L",id,"PLUGIN_NAME",id,"ON")
     }else if (equal(arg,"0",1)){
         g_Editing = 0
         Clear_AllEdit(0)
         if (task_exists(id+CHECKTASKID)) remove_task(id+CHECKTASKID)
-        client_print(0,print_chat,">> %L - %L",id,"MENU_TITLE",id,"OFF")
+        client_print(0,print_chat,">> %L - %L",id,"PLUGIN_NAME",id,"OFF")
     }
     return PLUGIN_HANDLED 
 }
@@ -138,7 +138,7 @@ public mse_menu(id, level, cid)
 
     // title
 
-    format(sItemText, 100, "%L", id, "MENU_TITLE")
+    format(sItemText, 100, "%L", id, "PLUGIN_NAME")
     g_nMSEMenuID = menu_create(sItemText, "mse_menu_handler")
 
     new cbMenu = menu_makecallback("mse_menu_callback")

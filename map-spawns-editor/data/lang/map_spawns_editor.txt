@@ -1,7 +1,7 @@
 [en]
 ON = ON
 OFF = OFF
-MENU_TITLE = Map Spawns Editor
+PLUGIN_NAME = Map Spawns Editor
 MENU_ADD_SPAWN = Add a %s spawn point
 MENU_ADD_LOCATION = Add spawn mode
 MENU_LOCATION_CURRENT = Without Z-offset
@@ -36,7 +36,7 @@ ERROR_SAVE_SPAWNS_FILE = Error: failed to write spawns config.
 [bp]
 ON = ON
 OFF = OFF
-MENU_TITLE = Editor de Spawns de Mapas
+PLUGIN_NAME = Editor de Spawns de Mapas
 MENU_ADD_SPAWN = Adicionar um ponto de spawn %s
 MENU_ADD_LOCATION = Adicionar um local de spawn
 MENU_LOCATION_CURRENT = Local atual
@@ -71,7 +71,7 @@ ERROR_SAVE_SPAWNS_FILE = Erro: Nao foi possivel salvar o arquivo de spawns.
 [cn]
 ON = 打开
 OFF = 关闭
-MENU_TITLE = 地图出生点编辑工具
+PLUGIN_NAME = 地图出生点编辑工具
 MENU_ADD_SPAWN = 增加一个 %s 出生点
 MENU_ADD_LOCATION = 设定出生点添加到
 MENU_LOCATION_CURRENT = 当前位置
@@ -106,7 +106,7 @@ ERROR_SAVE_SPAWNS_FILE = 错误: 无法保存出生点文件.
 [cs]
 ON = Zapnout
 OFF = Vypnout
-MENU_TITLE = Upravit spawny na mape
+PLUGIN_NAME = Upravit spawny na mape
 MENU_ADD_SPAWN = Pridat spawn %s
 MENU_ADD_LOCATION = Pridat spawnovaci lokaci
 MENU_LOCATION_CURRENT = Momentalni lokace
@@ -141,7 +141,7 @@ ERROR_SAVE_SPAWNS_FILE = Chyba: Nemohu ulozit spawny.
 [cz]
 ON = Zapnuto
 OFF = Vypnuto
-MENU_TITLE = Editor spawnu
+PLUGIN_NAME = Editor spawnu
 MENU_ADD_SPAWN = Pridat %s spawn point
 MENU_ADD_LOCATION = Pridat pozici spawnu
 MENU_LOCATION_CURRENT = Momentalni pozice
@@ -176,7 +176,7 @@ ERROR_SAVE_SPAWNS_FILE = Error: Nemuzu ulozit do souboru.
 [de]
 ON = AN
 OFF = AUS
-MENU_TITLE = Spawnpunkte Bearbeiten
+PLUGIN_NAME = Spawnpunkte Bearbeiten
 MENU_ADD_SPAWN = Einen %s Spawnpunkt hinzufuegen
 MENU_ADD_LOCATION = Spawnpunkt Position hinzufuegen
 MENU_LOCATION_CURRENT = Eigene Position
@@ -211,7 +211,7 @@ ERROR_SAVE_SPAWNS_FILE = Fehler: Kann Spawnpunktedatei nicht speichern.
 [es]
 ON = ON
 OFF = OFF
-MENU_TITLE = Editor de Spawns de Mapas
+PLUGIN_NAME = Editor de Spawns de Mapas
 MENU_ADD_SPAWN = Agregar un punto de Spawn %s
 MENU_ADD_LOCATION = Lugar a agregar Spawn
 MENU_LOCATION_CURRENT = Posicion Actual
@@ -246,7 +246,7 @@ ERROR_SAVE_SPAWNS_FILE = Error: Imposible Guardar Archivo de Spawns.
 [fr]
 ON = ON
 OFF = OFF
-MENU_TITLE = Editeur de Spawns
+PLUGIN_NAME = Editeur de Spawns
 MENU_ADD_SPAWN = Ajouter un spawn %s
 MENU_ADD_LOCATION = Ajouter une position de spawn
 MENU_LOCATION_CURRENT = Position Actuelle
@@ -281,7 +281,7 @@ ERROR_SAVE_SPAWNS_FILE = Erreur: Impossible de sauvegarder les points de spawn d
 [nl]
 ON = Aan
 OFF = Uit
-MENU_TITLE = Map Spawn Aanpasser
+PLUGIN_NAME = Map Spawn Aanpasser
 MENU_ADD_SPAWN = Voeg een %s spawn punt toe
 MENU_ADD_LOCATION = Voeg een spawn toe op locatie
 MENU_LOCATION_CURRENT = Huidige locatie
@@ -316,7 +316,7 @@ ERROR_SAVE_SPAWNS_FILE = Error: Kan spawn bestand niet opslaan.
 [pl]
 ON = ON
 OFF = OFF
-MENU_TITLE = Map Spawns Editor [PL bY Zuko]
+PLUGIN_NAME = Map Spawns Editor [PL bY Zuko]
 MENU_ADD_SPAWN = Dodaj %s spawn
 MENU_ADD_LOCATION = Zmien lokalizacje spawn'a
 MENU_LOCATION_CURRENT = Obecna lokalizacja
@@ -351,7 +351,7 @@ ERROR_SAVE_SPAWNS_FILE = Blad: Niemozna zapisac pliku ze spawn'ami.
 [ro]
 ON = PORNIT
 OFF = OPRIT
-MENU_TITLE = Editor de spawnuri
+PLUGIN_NAME = Editor de spawnuri
 MENU_ADD_SPAWN = Adauga un %s spawn point
 MENU_ADD_LOCATION = Adauga locatie de spawn
 MENU_LOCATION_CURRENT = Locatia curenta
@@ -386,7 +386,7 @@ ERROR_SAVE_SPAWNS_FILE = Eroare: Nu s-au putut salva spawn-urile.
 [ru]
 ON = ВКЛ
 OFF = ВЫКЛ
-MENU_TITLE = Map Spawns Editor
+PLUGIN_NAME = Map Spawns Editor
 MENU_ADD_SPAWN = Добавить %s спаун
 MENU_ADD_LOCATION = Режим добавления
 MENU_LOCATION_CURRENT = Без смещения по оси Z
@@ -421,7 +421,7 @@ ERROR_SAVE_SPAWNS_FILE = Ошибка: не удалось сохранить к
 [sk]
 ON = Zapnute
 OFF = Vypnute
-MENU_TITLE = Editor spawnov
+PLUGIN_NAME = Editor spawnov
 MENU_ADD_SPAWN = Pridat %s spawn point
 MENU_ADD_LOCATION = Pridat poziciu spawnu
 MENU_LOCATION_CURRENT = Momentalna pozicia
@@ -456,7 +456,7 @@ ERROR_SAVE_SPAWNS_FILE = Chyba: Config spawn pointov nemozno ulozit do suboru.
 [sv]
 ON = PA
 OFF = AV
-MENU_TITLE = karta spawns redakt'o'r
+PLUGIN_NAME = karta spawns redakt'o'r
 MENU_ADD_SPAWN = adda en %s spawns punkt
 MENU_ADD_LOCATION = Adda spawns lokalisera
 MENU_LOCATION_CURRENT = Nuvarande l'a'ge
