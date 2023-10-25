@@ -159,7 +159,7 @@ public mse_menu(id, level, cid)
     format(sItemText, 100, "%L^n", id, "MENU_ROTATE_CLOCKWISE")
     menu_additem(g_nMSEMenuID, sItemText, "5", 0, -1)
 
-    format(sItemText, 100, "%L^n", id, "MENU_CLEAR_SPAWN")
+    format(sItemText, 100, "%L^n", id, "MENU_DELETE_SPAWN")
     menu_additem(g_nMSEMenuID, sItemText, "6", 0, cbMenu)
 
     menu_additem(g_nMSEMenuID, "[Save Spawns to File]", "7", 0, cbMenu)
