@@ -1,7 +1,8 @@
 [en]
 ON = ON
 OFF = OFF
-MENU_ADD_SPAWN = Add a %s spawn point
+MENU_ADD_SPAWN = Add
+MSG_ADD_SPAWN = Add a %s spawn point
 MENU_SAVE_ALL_SPAWNS = SAVE
 MENU_CLEAR_ALL_T_SPAWNS = Delete all T spawns
 MENU_CLEAR_ALL_CT_SPAWNS = Delete all CT spawns
@@ -28,7 +29,8 @@ ERROR_SAVE_SPAWNS_FILE = Error: failed to write spawns config.
 [bp]
 ON = ON
 OFF = OFF
-MENU_ADD_SPAWN = Adicionar um ponto de spawn %s
+MENU_ADD_SPAWN = Para adicionar
+MSG_ADD_SPAWN = Adicionar um ponto de spawn %s
 MENU_SAVE_ALL_SPAWNS = Salvar todos os pontos de spawn
 MENU_CLEAR_ALL_T_SPAWNS = Apagar todos os spawns dos T
 MENU_CLEAR_ALL_CT_SPAWNS = Apagar todos os spawns dosl CT
@@ -55,7 +57,8 @@ ERROR_SAVE_SPAWNS_FILE = Erro: Nao foi possivel salvar o arquivo de spawns.
 [cn]
 ON = 打开
 OFF = 关闭
-MENU_ADD_SPAWN = 增加一个 %s 出生点
+MENU_ADD_SPAWN = 增加一个
+MSG_ADD_SPAWN = 增加一个 %s 出生点
 MENU_SAVE_ALL_SPAWNS = 保存所有出生点
 MENU_CLEAR_ALL_T_SPAWNS = 清除所有 T 出生点
 MENU_CLEAR_ALL_CT_SPAWNS = 清除所有 CT 出生点
@@ -82,7 +85,8 @@ ERROR_SAVE_SPAWNS_FILE = 错误: 无法保存出生点文件.
 [cs]
 ON = Zapnout
 OFF = Vypnout
-MENU_ADD_SPAWN = Pridat spawn %s
+MENU_ADD_SPAWN = Pridat
+MSG_ADD_SPAWN = Pridat spawn %s
 MENU_SAVE_ALL_SPAWNS = Uloz vsechny spawny
 MENU_CLEAR_ALL_T_SPAWNS = Smaz vsechny T spawny
 MENU_CLEAR_ALL_CT_SPAWNS = Smaz vsechny CT spawny
@@ -109,7 +113,8 @@ ERROR_SAVE_SPAWNS_FILE = Chyba: Nemohu ulozit spawny.
 [cz]
 ON = Zapnuto
 OFF = Vypnuto
-MENU_ADD_SPAWN = Pridat %s spawn point
+MENU_ADD_SPAWN = Pridat
+MSG_ADD_SPAWN = Pridat %s spawn point
 MENU_SAVE_ALL_SPAWNS = Ulozit vsechny spawnpointy
 MENU_CLEAR_ALL_T_SPAWNS = Vycistit T spawny
 MENU_CLEAR_ALL_CT_SPAWNS = Vycistit CT spawny
@@ -136,7 +141,8 @@ ERROR_SAVE_SPAWNS_FILE = Error: Nemuzu ulozit do souboru.
 [de]
 ON = AN
 OFF = AUS
-MENU_ADD_SPAWN = Einen %s Spawnpunkt hinzufuegen
+MENU_ADD_SPAWN = Hinzufugen
+MSG_ADD_SPAWN = Einen %s Spawnpunkt hinzufuegen
 MENU_SAVE_ALL_SPAWNS = Alle Spawnpunkte speichern
 MENU_CLEAR_ALL_T_SPAWNS = Loesche alle T Spawnpunkte
 MENU_CLEAR_ALL_CT_SPAWNS = Loesche alle CT Spawnpunkte
@@ -163,7 +169,8 @@ ERROR_SAVE_SPAWNS_FILE = Fehler: Kann Spawnpunktedatei nicht speichern.
 [es]
 ON = ON
 OFF = OFF
-MENU_ADD_SPAWN = Agregar un punto de Spawn %s
+MENU_ADD_SPAWN = Para a gregar
+MSG_ADD_SPAWN = Agregar un punto de Spawn %s
 MENU_SAVE_ALL_SPAWNS = Guardar Todos los Puntos de Spawn
 MENU_CLEAR_ALL_T_SPAWNS = Borrar Todos los Spawns de Ts
 MENU_CLEAR_ALL_CT_SPAWNS = Borrar Todos los Spawns de CTs
@@ -190,7 +197,8 @@ ERROR_SAVE_SPAWNS_FILE = Error: Imposible Guardar Archivo de Spawns.
 [fr]
 ON = ON
 OFF = OFF
-MENU_ADD_SPAWN = Ajouter un spawn %s
+MENU_ADD_SPAWN = Ajouter
+MSG_ADD_SPAWN = Ajouter un spawn %s
 MENU_SAVE_ALL_SPAWNS = Sauvegarder tous les points de spawn
 MENU_CLEAR_ALL_T_SPAWNS = Effacer tous les spawns T
 MENU_CLEAR_ALL_CT_SPAWNS = Effacer tous les spawns CT
@@ -217,7 +225,8 @@ ERROR_SAVE_SPAWNS_FILE = Erreur: Impossible de sauvegarder les points de spawn d
 [nl]
 ON = Aan
 OFF = Uit
-MENU_ADD_SPAWN = Voeg een %s spawn punt toe
+MENU_ADD_SPAWN = Toevoegen
+MSG_ADD_SPAWN = Voeg een %s spawn punt toe
 MENU_SAVE_ALL_SPAWNS = Sla alles spawn punten op
 MENU_CLEAR_ALL_T_SPAWNS = Reset alle T spawn punten
 MENU_CLEAR_ALL_CT_SPAWNS = Reset alle CT spawn punten
@@ -244,7 +253,8 @@ ERROR_SAVE_SPAWNS_FILE = Error: Kan spawn bestand niet opslaan.
 [pl]
 ON = ON
 OFF = OFF
-MENU_ADD_SPAWN = Dodaj %s spawn
+MENU_ADD_SPAWN = Dodaj
+MSG_ADD_SPAWN = Dodaj %s spawn
 MENU_SAVE_ALL_SPAWNS = Zapisz wszystkie spawn'y
 MENU_CLEAR_ALL_T_SPAWNS = Usun wszystkie spawn'y T
 MENU_CLEAR_ALL_CT_SPAWNS = Usun wszystkie spawn'y CT
@@ -271,7 +281,8 @@ ERROR_SAVE_SPAWNS_FILE = Blad: Niemozna zapisac pliku ze spawn'ami.
 [ro]
 ON = PORNIT
 OFF = OPRIT
-MENU_ADD_SPAWN = Adauga un %s spawn point
+MENU_ADD_SPAWN = Adauga
+MSG_ADD_SPAWN = Adauga un %s spawn point
 MENU_SAVE_ALL_SPAWNS = Salveaza toate spawn-rile
 MENU_CLEAR_ALL_T_SPAWNS = Sterge toate spawn-urile pentru T
 MENU_CLEAR_ALL_CT_SPAWNS = Sterge toate spawn-urile pentru CT
@@ -298,7 +309,8 @@ ERROR_SAVE_SPAWNS_FILE = Eroare: Nu s-au putut salva spawn-urile.
 [ru]
 ON = ВКЛ
 OFF = ВЫКЛ
-MENU_ADD_SPAWN = Добавить %s спаун
+MENU_ADD_SPAWN = Добавить
+MSG_ADD_SPAWN = Добавить %s спаун
 MENU_SAVE_ALL_SPAWNS = СОХРАНИТЬ
 MENU_CLEAR_ALL_T_SPAWNS = Удалить все спауны T
 MENU_CLEAR_ALL_CT_SPAWNS = Удалить все спауны CT
@@ -325,7 +337,8 @@ ERROR_SAVE_SPAWNS_FILE = Ошибка: не удалось сохранить к
 [sk]
 ON = Zapnute
 OFF = Vypnute
-MENU_ADD_SPAWN = Pridat %s spawn point
+MENU_ADD_SPAWN = Pridat
+MSG_ADD_SPAWN = Pridat %s spawn point
 MENU_SAVE_ALL_SPAWNS = Ulozit vsetky spawnpointy
 MENU_CLEAR_ALL_T_SPAWNS = Zmazat vsetky T spawny
 MENU_CLEAR_ALL_CT_SPAWNS = Zmazat vsetky CT spawny
@@ -352,7 +365,8 @@ ERROR_SAVE_SPAWNS_FILE = Chyba: Config spawn pointov nemozno ulozit do suboru.
 [sv]
 ON = PA
 OFF = AV
-MENU_ADD_SPAWN = adda en %s spawns punkt
+MENU_ADD_SPAWN = Tillagga
+MSG_ADD_SPAWN = adda en %s spawns punkt
 MENU_SAVE_ALL_SPAWNS = spara alla spawns punkt
 MENU_CLEAR_ALL_T_SPAWNS = Rensa alla T spawns
 MENU_CLEAR_ALL_CT_SPAWNS = Rensa alla CT spawn

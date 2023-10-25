@@ -150,7 +150,8 @@ public mse_menu(id, level, cid)
     menu_additem(g_nMSEMenuID, "[Spawns Count]", "1", 0, cbMenu)
     menu_additem(g_nMSEMenuID, "[Spawn Type]^n", "2", 0, cbMenu)
 
-    menu_additem(g_nMSEMenuID, "Add^n", "3", 0, cbMenu)
+    format(sItemText, 100, "%L^n", id, "MENU_ADD_SPAWN")
+    menu_additem(g_nMSEMenuID, sItemText, "3", 0, cbMenu)
 
     format(sItemText, 100, "%L", id, "MENU_TURN_LEFT")
     menu_additem(g_nMSEMenuID, sItemText, "4", 0, -1)
@@ -313,7 +314,7 @@ public mse_menu_handler(id, menu, item)
 
                             g_EditT++
 
-                            client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "T")
+                            client_print(0, print_chat, ">> %L", id, "MSG_ADD_SPAWN", "T")
                         }
                     }
                     case 2:
@@ -324,7 +325,7 @@ public mse_menu_handler(id, menu, item)
 
                             g_EditCT++
 
-                            client_print(0, print_chat, ">> %L", id, "MENU_ADD_SPAWN", "CT")
+                            client_print(0, print_chat, ">> %L", id, "MSG_ADD_SPAWN", "CT")
                         }
                     }
                 }
