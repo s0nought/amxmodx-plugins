@@ -1,7 +1,6 @@
 [en]
 ON = ON
 OFF = OFF
-PLUGIN_NAME = Map Spawns Editor
 MENU_ADD_SPAWN = Add a %s spawn point
 MENU_SAVE_ALL_SPAWNS = SAVE
 MENU_CLEAR_ALL_T_SPAWNS = Delete all T spawns
@@ -29,7 +28,6 @@ ERROR_SAVE_SPAWNS_FILE = Error: failed to write spawns config.
 [bp]
 ON = ON
 OFF = OFF
-PLUGIN_NAME = Editor de Spawns de Mapas
 MENU_ADD_SPAWN = Adicionar um ponto de spawn %s
 MENU_SAVE_ALL_SPAWNS = Salvar todos os pontos de spawn
 MENU_CLEAR_ALL_T_SPAWNS = Apagar todos os spawns dos T
@@ -57,7 +55,6 @@ ERROR_SAVE_SPAWNS_FILE = Erro: Nao foi possivel salvar o arquivo de spawns.
 [cn]
 ON = 打开
 OFF = 关闭
-PLUGIN_NAME = 地图出生点编辑工具
 MENU_ADD_SPAWN = 增加一个 %s 出生点
 MENU_SAVE_ALL_SPAWNS = 保存所有出生点
 MENU_CLEAR_ALL_T_SPAWNS = 清除所有 T 出生点
@@ -85,7 +82,6 @@ ERROR_SAVE_SPAWNS_FILE = 错误: 无法保存出生点文件.
 [cs]
 ON = Zapnout
 OFF = Vypnout
-PLUGIN_NAME = Upravit spawny na mape
 MENU_ADD_SPAWN = Pridat spawn %s
 MENU_SAVE_ALL_SPAWNS = Uloz vsechny spawny
 MENU_CLEAR_ALL_T_SPAWNS = Smaz vsechny T spawny
@@ -113,7 +109,6 @@ ERROR_SAVE_SPAWNS_FILE = Chyba: Nemohu ulozit spawny.
 [cz]
 ON = Zapnuto
 OFF = Vypnuto
-PLUGIN_NAME = Editor spawnu
 MENU_ADD_SPAWN = Pridat %s spawn point
 MENU_SAVE_ALL_SPAWNS = Ulozit vsechny spawnpointy
 MENU_CLEAR_ALL_T_SPAWNS = Vycistit T spawny
@@ -141,7 +136,6 @@ ERROR_SAVE_SPAWNS_FILE = Error: Nemuzu ulozit do souboru.
 [de]
 ON = AN
 OFF = AUS
-PLUGIN_NAME = Spawnpunkte Bearbeiten
 MENU_ADD_SPAWN = Einen %s Spawnpunkt hinzufuegen
 MENU_SAVE_ALL_SPAWNS = Alle Spawnpunkte speichern
 MENU_CLEAR_ALL_T_SPAWNS = Loesche alle T Spawnpunkte
@@ -169,7 +163,6 @@ ERROR_SAVE_SPAWNS_FILE = Fehler: Kann Spawnpunktedatei nicht speichern.
 [es]
 ON = ON
 OFF = OFF
-PLUGIN_NAME = Editor de Spawns de Mapas
 MENU_ADD_SPAWN = Agregar un punto de Spawn %s
 MENU_SAVE_ALL_SPAWNS = Guardar Todos los Puntos de Spawn
 MENU_CLEAR_ALL_T_SPAWNS = Borrar Todos los Spawns de Ts
@@ -197,7 +190,6 @@ ERROR_SAVE_SPAWNS_FILE = Error: Imposible Guardar Archivo de Spawns.
 [fr]
 ON = ON
 OFF = OFF
-PLUGIN_NAME = Editeur de Spawns
 MENU_ADD_SPAWN = Ajouter un spawn %s
 MENU_SAVE_ALL_SPAWNS = Sauvegarder tous les points de spawn
 MENU_CLEAR_ALL_T_SPAWNS = Effacer tous les spawns T
@@ -225,7 +217,6 @@ ERROR_SAVE_SPAWNS_FILE = Erreur: Impossible de sauvegarder les points de spawn d
 [nl]
 ON = Aan
 OFF = Uit
-PLUGIN_NAME = Map Spawn Aanpasser
 MENU_ADD_SPAWN = Voeg een %s spawn punt toe
 MENU_SAVE_ALL_SPAWNS = Sla alles spawn punten op
 MENU_CLEAR_ALL_T_SPAWNS = Reset alle T spawn punten
@@ -253,7 +244,6 @@ ERROR_SAVE_SPAWNS_FILE = Error: Kan spawn bestand niet opslaan.
 [pl]
 ON = ON
 OFF = OFF
-PLUGIN_NAME = Map Spawns Editor [PL bY Zuko]
 MENU_ADD_SPAWN = Dodaj %s spawn
 MENU_SAVE_ALL_SPAWNS = Zapisz wszystkie spawn'y
 MENU_CLEAR_ALL_T_SPAWNS = Usun wszystkie spawn'y T
@@ -281,7 +271,6 @@ ERROR_SAVE_SPAWNS_FILE = Blad: Niemozna zapisac pliku ze spawn'ami.
 [ro]
 ON = PORNIT
 OFF = OPRIT
-PLUGIN_NAME = Editor de spawnuri
 MENU_ADD_SPAWN = Adauga un %s spawn point
 MENU_SAVE_ALL_SPAWNS = Salveaza toate spawn-rile
 MENU_CLEAR_ALL_T_SPAWNS = Sterge toate spawn-urile pentru T
@@ -309,7 +298,6 @@ ERROR_SAVE_SPAWNS_FILE = Eroare: Nu s-au putut salva spawn-urile.
 [ru]
 ON = ВКЛ
 OFF = ВЫКЛ
-PLUGIN_NAME = Map Spawns Editor
 MENU_ADD_SPAWN = Добавить %s спаун
 MENU_SAVE_ALL_SPAWNS = СОХРАНИТЬ
 MENU_CLEAR_ALL_T_SPAWNS = Удалить все спауны T
@@ -337,7 +325,6 @@ ERROR_SAVE_SPAWNS_FILE = Ошибка: не удалось сохранить к
 [sk]
 ON = Zapnute
 OFF = Vypnute
-PLUGIN_NAME = Editor spawnov
 MENU_ADD_SPAWN = Pridat %s spawn point
 MENU_SAVE_ALL_SPAWNS = Ulozit vsetky spawnpointy
 MENU_CLEAR_ALL_T_SPAWNS = Zmazat vsetky T spawny
@@ -365,7 +352,6 @@ ERROR_SAVE_SPAWNS_FILE = Chyba: Config spawn pointov nemozno ulozit do suboru.
 [sv]
 ON = PA
 OFF = AV
-PLUGIN_NAME = karta spawns redakt'o'r
 MENU_ADD_SPAWN = adda en %s spawns punkt
 MENU_SAVE_ALL_SPAWNS = spara alla spawns punkt
 MENU_CLEAR_ALL_T_SPAWNS = Rensa alla T spawns

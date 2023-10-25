@@ -4,9 +4,9 @@
 
 #define REQUIRED_ADMIN_LEVEL ADMIN_BAN // ADMIN_LEVEL_C
 
-#define PLUGINNAME   "Map Spawns Editor"
-#define VERSION      "1.0.17"
-#define AUTHOR       "iG_os"
+#define PLUGIN_NAME "Map Spawns Editor"
+#define VERSION     "1.1.0"
+#define AUTHOR      "iG_os"
 
 // CS default MDL and SPR
 #define T_MDL     "models/player/leet/leet.mdl"
@@ -51,7 +51,7 @@ new g_BeamColors[4][3]={{255,0,0},{0,255,0},{200,200,0},{0,0,255}}
 
 public plugin_init()
 {
-    register_plugin(PLUGINNAME, VERSION, AUTHOR)
+    register_plugin(PLUGIN_NAME, VERSION, AUTHOR)
     register_dictionary("map_spawns_editor.txt")
 
     g_LoadInit = true // disabled pfn_keyvalue using
@@ -102,12 +102,12 @@ public editor_onoff(id,level,cid)
         Clear_AllEdit(0)
         Load_SpawnFlie(0)
         Spawns_To_Edit()
-        client_print(0,print_chat,">> %L - %L",id,"PLUGIN_NAME",id,"ON")
+        client_print(0, print_chat, ">> %s - %L", PLUGIN_NAME, id, "ON")
     }else if (equal(arg,"0",1)){
         g_Editing = 0
         Clear_AllEdit(0)
         if (task_exists(id+CHECKTASKID)) remove_task(id+CHECKTASKID)
-        client_print(0,print_chat,">> %L - %L",id,"PLUGIN_NAME",id,"OFF")
+        client_print(0, print_chat, ">> %s - %L", PLUGIN_NAME, id, "OFF")
     }
     return PLUGIN_HANDLED 
 }
@@ -138,7 +138,7 @@ public mse_menu(id, level, cid)
 
     // title
 
-    format(sItemText, 100, "%L", id, "PLUGIN_NAME")
+    format(sItemText, 100, "%s", PLUGIN_NAME)
     g_nMSEMenuID = menu_create(sItemText, "mse_menu_handler")
 
     new cbMenu = menu_makecallback("mse_menu_callback")
