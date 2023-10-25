@@ -224,11 +224,11 @@ public mse_menu_callback(id, menu, item)
         {
             case 1:
             {
-                format(sEntType, 3, "T")
+                copy(sEntType, 4, "T")
             }
             case 2:
             {
-                format(sEntType, 3, "CT")
+                copy(sEntType, 4, "CT")
             }
         }
 
