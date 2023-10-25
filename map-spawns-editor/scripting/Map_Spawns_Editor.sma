@@ -153,10 +153,10 @@ public mse_menu(id, level, cid)
     format(sItemText, 100, "%L^n", id, "MENU_ADD_SPAWN")
     menu_additem(g_nMSEMenuID, sItemText, "3", 0, cbMenu)
 
-    format(sItemText, 100, "%L", id, "MENU_TURN_LEFT")
+    format(sItemText, 100, "%L", id, "MENU_ROTATE_COUNTERCLOCKWISE")
     menu_additem(g_nMSEMenuID, sItemText, "4", 0, -1)
 
-    format(sItemText, 100, "%L^n", id, "MENU_TURN_RIGHT")
+    format(sItemText, 100, "%L^n", id, "MENU_ROTATE_CLOCKWISE")
     menu_additem(g_nMSEMenuID, sItemText, "5", 0, -1)
 
     format(sItemText, 100, "%L^n", id, "MENU_CLEAR_SPAWN")
