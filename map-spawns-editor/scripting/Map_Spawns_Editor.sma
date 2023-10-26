@@ -172,7 +172,7 @@ public mse_menu(id, level, cid)
     format(sItemText, 100, "%L^n", id, "MENU_DELETE_ALL")
     menu_additem(g_nMSEMenuID, sItemText, "10", 0, cbMenu)
 
-    format(sItemText, 100, "\r%L", id, "MENU_DEL_SPAWNS_FILE")
+    format(sItemText, 100, "\r%L", id, "MENU_DELETE_CONFIG")
     menu_additem(g_nMSEMenuID, sItemText, "11", 0, -1)
     format(sItemText, 100, "\y%L^n^n^n", id, "MENU_EXPORT_FOR_RIPENT")
     menu_additem(g_nMSEMenuID, sItemText, "12", 0, -1)
