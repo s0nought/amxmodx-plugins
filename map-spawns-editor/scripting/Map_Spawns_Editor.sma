@@ -169,7 +169,8 @@ public mse_menu(id, level, cid)
     menu_additem(g_nMSEMenuID, "[Spawns Count]", "8", 0, cbMenu)
     menu_additem(g_nMSEMenuID, "[Spawn Type]^n", "9", 0, cbMenu)
 
-    menu_additem(g_nMSEMenuID, "Delete ALL^n", "10", 0, cbMenu)
+    format(sItemText, 100, "%L^n", id, "MENU_DELETE_ALL")
+    menu_additem(g_nMSEMenuID, sItemText, "10", 0, cbMenu)
 
     format(sItemText, 100, "\r%L", id, "MENU_DEL_SPAWNS_FILE")
     menu_additem(g_nMSEMenuID, sItemText, "11", 0, -1)
