@@ -150,7 +150,7 @@ public mse_menu(id, level, cid)
     menu_additem(g_nMSEMenuID, "[Spawns Count]", "1", 0, cbMenu)
     menu_additem(g_nMSEMenuID, "[Spawn Type]^n", "2", 0, cbMenu)
 
-    format(sItemText, 100, "%L^n", id, "MENU_ADD_SPAWN")
+    format(sItemText, 100, "%L^n", id, "MENU_ADD")
     menu_additem(g_nMSEMenuID, sItemText, "3", 0, cbMenu)
 
     format(sItemText, 100, "%L", id, "MENU_ROTATE_COUNTERCLOCKWISE")
