@@ -242,13 +242,13 @@ public mse_menu_callback(id, menu, item)
     {
         if (g_bSpawnsChanged)
         {
-            format(sItemNewText, 100, "\r%L^n", id, "MENU_SAVE_ALL_SPAWNS")
+            format(sItemNewText, 100, "\r%L^n", id, "MENU_SAVE")
 
             menu_item_setname(menu, 6, sItemNewText)
         }
         else
         {
-            format(sItemNewText, 100, "\y%L^n", id, "MENU_SAVE_ALL_SPAWNS")
+            format(sItemNewText, 100, "\y%L^n", id, "MENU_SAVE")
 
             menu_item_setname(menu, 6, sItemNewText)
         }
