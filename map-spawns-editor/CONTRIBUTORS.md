@@ -1,6 +1,18 @@
 # Core
 
-[jopmako](https://forums.alliedmods.net/member.php?u=17640) (original author)
+- [jopmako](https://forums.alliedmods.net/member.php?u=17640) (original author)
+
+# Maintainers
+
+- [s0nought](https://github.com/s0nought) (current maintainer)
+
+# Bug fixes
+
+- [s0nought](https://github.com/s0nought) (v1.1.0)
+
+# Features
+
+- [s0nought](https://github.com/s0nought) (v1.1.0)
 
 # Special thanks
 
@@ -18,12 +30,12 @@
 - `BP` [2006.10.28](https://forums.alliedmods.net/showpost.php?p=396122&postcount=6) - [commonbullet](https://forums.alliedmods.net/member.php?u=7883)
 - `NL` [2006.11.25](https://forums.alliedmods.net/showpost.php?p=407309&postcount=34) - [DSi](https://forums.alliedmods.net/member.php?u=22058)
 - `NL` [2006.12.09](https://forums.alliedmods.net/showpost.php?p=412941&postcount=8) - [geertjan88](https://forums.alliedmods.net/member.php?u=11423)
-- `EN` [2006.12.10](https://forums.alliedmods.net/showpost.php?p=413677&postcount=10) - [XxAvalanchexX](https://forums.alliedmods.net/member.php?u=2592)
+- `EN` [2006.12.10](https://forums.alliedmods.net/showpost.php?p=413677&postcount=10) - [XxAvalanchexX](https://forums.alliedmods.net/member.php?u=2592), [s0nought](https://github.com/s0nought) (v1.1.0)
 - `RO` [2006.12.11](https://forums.alliedmods.net/showpost.php?p=414138&postcount=37) - [Cladyu](https://forums.alliedmods.net/member.php?u=21822)
 - `FR` [2007.07.11](https://forums.alliedmods.net/showpost.php?p=501975&postcount=61) - [ConnorMcLeod](https://forums.alliedmods.net/member.php?u=18946)
 - `CZ` [2008.11.18](https://forums.alliedmods.net/showpost.php?p=715394&postcount=12) - [mycountry](https://forums.alliedmods.net/member.php?u=29138)
 - `PL` [2008.11.19](https://forums.alliedmods.net/showpost.php?p=715793&postcount=13) - [BeAfraid](https://forums.alliedmods.net/member.php?u=39015)
-- `RU` [2008.11.22](https://forums.alliedmods.net/showpost.php?p=716884&postcount=14) - [mozart123](https://forums.alliedmods.net/member.php?u=44161)
+- `RU` [2008.11.22](https://forums.alliedmods.net/showpost.php?p=716884&postcount=14) - [mozart123](https://forums.alliedmods.net/member.php?u=44161), [s0nought](https://github.com/s0nought) (v1.1.0)
 - `CS` [2008.11.22](https://forums.alliedmods.net/showpost.php?p=717034&postcount=15) - [B3N4K](https://forums.alliedmods.net/member.php?u=38314)
 - `FR` [2008.11.30](https://forums.alliedmods.net/showpost.php?p=720742&postcount=16) - [steve139](https://forums.alliedmods.net/member.php?u=27751)
 - `SV` [2009.04.11](https://forums.alliedmods.net/showpost.php?p=802806&postcount=17) - [kriixn](https://forums.alliedmods.net/member.php?u=49968)

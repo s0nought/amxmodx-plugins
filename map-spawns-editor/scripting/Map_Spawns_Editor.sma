@@ -1,3 +1,9 @@
+/*
+* This is a fork of iG_os's (jopmako's) Map Spawns Editor plugin (v 1.0.16) for CS 1.6.
+* 
+* Changelog: https://github.com/s0nought/amxmodx-plugins/blob/main/map-spawns-editor/CHANGELOG.md
+*/
+
 #include <amxmodx>
 #include <amxmisc>
 #include <engine>

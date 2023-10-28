@@ -1,66 +1,56 @@
-# Map Spawns Editor v1.0 update [2006-10-23]
+# Map Spawns Editor
 
-http://forums.alliedmods.net/showthread.php?t=43660
+## Authors
 
-This plugin let you ( add & del & edit ) map spawns absolute easy.
+See [CONTRIBUTORS.md](./CONTRIBUTORS.md)
 
-## What's for
+## Changelog
 
-- A lot of map have spawndeath & bad position & less spawns problem I know since I has made a server 5 months.  
-How can we fix this? I use some tools todo this but it hard use and do something when you are playing the game.  
-I got the way to do this, so I made this plugin.
+See [CHANGELOG.md](./CHANGELOG.md)
 
-- How easy? 
-  1. One plugin and use one menu you can do all thing.
-  1. Edit spawns and shange spawns angle at anytime without restart server or reload map just use save function.
-  1. Add & Del spawns just reload map once (you can Del all spawns if you want)
+## Summary
 
-## Requirements
+Create, delete and edit spawns.
 
-- AMX Mod X 1.76a or greater
-- Engine module
-
-## Install Instructions
-
-1. put the lang file Map_Spawns_Editor.amxx to (addons\amxmodx\plugins) folder
-1. put the lang file map_spawns_editor.txt to (addons\amxmodx\data\lang) folder
+[Plugin's homepage at AlliedModders](https://forums.alliedmods.net/showthread.php?t=43660)
 
 ## Description
 
-1. Load the map which need to be edit spawns.
-1. Join server with ADMIN_BAN and bind a key with amx_editor_menu command.
-1. Type `amx_spawn_editor 1` in console to enable editor function
-1. Push your binded key to open editor menu.(all function in menu)
-1. Now Add & Del & Edit use menu.(change angle and del spawn you need aim spawn what is need to be made)
-1. Finally, select `<save all spawns>` in menu when you finished and the changes will be activated.
+A spawn point (Spawn) is a special entity that instructs the game engine on where to teleport the player in the start of the round.
 
-NOTICE: If your (Editor Spawns) diff. to (Origina Spawns) that the map needs to be reloaded once to activate your changes.
+**Map Spawns Editor** lets you control where the spawns are located and how many of them are on the level.
 
-## Console Commands
+This plugin is useful for fixing bad spawns (e.g., ones that cause telefrag) or mirroring the spawns.
 
-- `amx_spawn_editor 1/0` // Enable & Disable Editor Function
-- `amx_editor_menu` // open Editor Menu
+![Map Spawns Editor v1.1.0](./screenshots/map_spawns_editor_002_v110.jpg "Map Spawns Editor v1.1.0")
 
-## Change Log
+## Hints
 
-- [2006-10-23] v1.0  
-Rewrite all code, it's almost a new one.  
-Fixed the Del spawns can not be less than orgign limit.  
-Added change spawn vangle left&right function.  
-Added easily create above player spawn function.  
-Added auto create (spawns) folder function if it's not exist.  
-Added multi-lingual support  
-Added Cvar map_spawns record spawns lets HLSW or Server Tools can see how many spawns in that map.
+- Only one person (with ADMIN_LEVEL_C clearance) can use the plugin at a time.
+- Save button turning red is the visual indication of unsaved changes.
+- To apply changes press Save and `amx_map <level>`.
 
-- [2006-08-23] First release. v0.5 [98 downloaded]  
-it works but have more bad code
+## Installation
 
-## Credits
+Download [map_spawns_editor_latest.zip](./dist/map_spawns_editor_latest.zip)
 
-help & some code from them
-- FreeCode, BAILOPAN, VEN, oneofthedragon 
-- and more...
+Unzip it to `Half-Life` directory.
 
-## Screenshots
+Add `Map_Spawns_Editor.amxx` to the end of `cstrike/addons/amxmodx/configs/plugins.ini`.
 
-![Map Spawns Editor](./screenshots/map_spawns_editor_001.jpg "Map Spawns Editor")
+## Client commands
+
+|Command|Description|
+|:-|:-|
+|`amx_spawn_editor`|1\|0 to enable\|disable the editor respectively|
+|`amx_mse_menu`|open the plugin's menu|
+
+## CVARs
+
+|CVAR|Default|Description|
+|:-|:-:|:-|
+|`amx_mse_safe_p2p`|100|min distance (in units) between neighbouring points to consider them safe|
+|`amx_mse_safe_p2w`|40|min distance (in units) between a world object and a spawn to consider latter one safe|
+|`amx_mse_rotation_angle`|30|rotation angle to rotate spawns clockwise and counterclockwise|
+|`amx_mse_z_offset`|28|Z offset to apply when creating spawns|
+|`amx_mse_unsafe_check`|1|1\|0 to enable\|disable unsafe position check respectively|
