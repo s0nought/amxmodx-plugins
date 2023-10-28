@@ -63,15 +63,16 @@ public plugin_init()
     g_LoadInit = true // disabled pfn_keyvalue using
 
     Spawns_Count()
-    new string[16]
-    format(string,15,"T(%d) CT(%d)",g_SpawnT,g_SpawnCT)
-    register_cvar("map_spawns",string,FCVAR_SERVER) // spawns info for HLSW display
+    new sSpawnsInfo[16]
+    format(sSpawnsInfo, 15, "T(%d) CT(%d)", g_SpawnT, g_SpawnCT)
+    register_cvar("map_spawns", sSpawnsInfo, FCVAR_SERVER) // HLSW
 
     register_event("TextMsg", "event_restartgame", "a", "2&#Game_C","2&#Game_w")
     register_event("DeathMsg", "event_death", "a")
     register_event("HLTV", "event_newround", "a", "1=0", "2=0")
 
     register_clcmd("amx_spawn_editor", "editor_onoff", REQUIRED_ADMIN_LEVEL, "- 1/0 switch editor function on/off")
+    register_clcmd("amx_mse_menu", "mse_menu", REQUIRED_ADMIN_LEVEL, "Map Spawns Editor menu")
 
     // min distance between neighbouring points to consider them safe
     g_Cvar_SafeP2PDist = register_cvar("amx_mse_safe_p2p", "100")
@@ -87,8 +88,6 @@ public plugin_init()
 
     // a toggle to enable and disable unsafe position check
     g_Cvar_UnsafeCheck = register_cvar("amx_mse_unsafe_check", "1")
-
-    register_clcmd("amx_mse_menu", "mse_menu", REQUIRED_ADMIN_LEVEL, "Map Spawns Editor menu")
 }
 
 
