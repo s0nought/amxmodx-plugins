@@ -25,6 +25,8 @@
 
 #define EDIT_CLASSNAME "Map_Spawns_Editor"
 
+new g_sMapName[32]
+
 new g_Cvar_SafeP2PDist
 new g_Cvar_SafeP2WDist
 new g_Cvar_RotationAngle
@@ -516,14 +518,13 @@ public plugin_precache()
     precache_model(CT_MDL)
     Laser_Spr = precache_model(LINE_SPR)
 
-    new MapName[32]
-    get_mapname(MapName, 31)
+    get_mapname(g_sMapName, 31)
     //store spawns point data in this file
-    format(g_SpawnFile, 255, "%s/%s_spawns.cfg",spawndir, MapName)
+    format(g_SpawnFile, 255, "%s/%s_spawns.cfg",spawndir, g_sMapName)
     //when restart game some bad spawn point will make user die,store data in this file,it's useful.
-    format(g_DieFile, 255, "%s/%s_spawns_die.cfg",spawndir, MapName)
+    format(g_DieFile, 255, "%s/%s_spawns_die.cfg",spawndir, g_sMapName)
     //export spawns data to this file for ripent.exe format,it's useful for import to bsp for ripent.exe
-    format(g_EntFile, 255, "%s/%s_ent.txt",spawndir, MapName)
+    format(g_EntFile, 255, "%s/%s_ent.txt",spawndir, g_sMapName)
 
     if (Load_SpawnFlie(1)) //load spawn file and create player spawn points
         g_LoadSuccessed = true
@@ -892,9 +893,8 @@ stock Save_SpawnsFile()
     if (file_exists(g_SpawnFile))
         delete_file(g_SpawnFile)
 
-    new mapname[32],line[128]
-    get_mapname(mapname,31)
-    format(line,127,"/* %s T=%d,CT=%d */ Map Spawns Editor Format File",mapname,g_EditT,g_EditCT)
+    new line[128]
+    format(line,127,"/* %s T=%d,CT=%d */ Map Spawns Editor Format File",g_sMapName,g_EditT,g_EditCT)
     write_file(g_SpawnFile, line, -1)
 
     new entity,team
