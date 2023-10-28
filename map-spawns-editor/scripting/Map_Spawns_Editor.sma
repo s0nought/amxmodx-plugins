@@ -26,6 +26,7 @@
 #define EDIT_CLASSNAME "Map_Spawns_Editor"
 
 new g_sMapName[32]
+new g_sAmxMapCommand[40]
 
 new g_Cvar_SafeP2PDist
 new g_Cvar_SafeP2WDist
@@ -181,8 +182,11 @@ public mse_menu(id, level, cid)
 
     format(sItemText, 100, "\r%L", id, "MENU_DELETE_CONFIG")
     menu_additem(g_nMSEMenuID, sItemText, "11", 0, -1)
-    format(sItemText, 100, "\y%L^n^n^n", id, "MENU_EXPORT_ENT")
+    format(sItemText, 100, "\y%L^n", id, "MENU_EXPORT_ENT")
     menu_additem(g_nMSEMenuID, sItemText, "12", 0, -1)
+
+    format(sItemText, 100, "%s^n^n", g_sAmxMapCommand)
+    menu_additem(g_nMSEMenuID, sItemText, "13", 0, -1)
 
     // controls
 
@@ -481,6 +485,10 @@ public mse_menu_handler(id, menu, item)
                 client_print(0, print_chat, ">> %L [%s] (T=%d,CT=%d)", id, "MSG_EXPORT_SPAWNS_FILE", g_EntFile, g_EditT, g_EditCT)
             }
         }
+        case 13:
+        {
+            server_cmd(g_sAmxMapCommand)
+        }
     }
 
     // stay on the first page
@@ -519,6 +527,9 @@ public plugin_precache()
     Laser_Spr = precache_model(LINE_SPR)
 
     get_mapname(g_sMapName, 31)
+
+    format(g_sAmxMapCommand, 39, "amx_map %s", g_sMapName)
+
     //store spawns point data in this file
     format(g_SpawnFile, 255, "%s/%s_spawns.cfg",spawndir, g_sMapName)
     //when restart game some bad spawn point will make user die,store data in this file,it's useful.
