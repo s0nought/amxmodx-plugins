@@ -238,8 +238,11 @@ public mse_menu(id, level, cid)
     format(sItemText, 100, "\y%L^n", id, "MENU_EXPORT_ENT")
     menu_additem(g_nMSEMenuID, sItemText, "12", 0, -1)
 
-    format(sItemText, 100, "%s^n^n", g_sAmxMapCommand)
+    format(sItemText, 100, "%L^n", id, "MENU_MIRROR")
     menu_additem(g_nMSEMenuID, sItemText, "13", 0, -1)
+
+    format(sItemText, 100, "%s^n", g_sAmxMapCommand)
+    menu_additem(g_nMSEMenuID, sItemText, "14", 0, -1)
 
     // controls
 
@@ -464,7 +467,7 @@ public mse_menu_handler(id, menu, item)
         }
         case 7:
         {
-            if (Save_SpawnsFile())
+            if (Save_SpawnsFile(1))
             {
                 g_bSpawnsChanged = false
 
@@ -529,6 +532,12 @@ public mse_menu_handler(id, menu, item)
             }
         }
         case 13:
+        {
+            Save_SpawnsFile(3)
+
+            server_cmd(g_sAmxMapCommand)
+        }
+        case 14:
         {
             server_cmd(g_sAmxMapCommand)
         }
@@ -942,19 +951,26 @@ stock Make_TE_BEAMPOINTS(id,color,Float:Vec1[3],Float:Vec2[3],width,brightness){
 }
 
 
-stock Save_SpawnsFile()
+stock Save_SpawnsFile(saveformat)
 {
     if (file_exists(g_SpawnFile))
+    {
         delete_file(g_SpawnFile)
+    }
 
     new line[128]
-    format(line,127,"/* %s T=%d,CT=%d */ Map Spawns Editor Format File",g_sMapName,g_EditT,g_EditCT)
+
+    format(line, 127, "/* %s T=%d,CT=%d */ Map Spawns Editor Format File", g_sMapName, g_EditT, g_EditCT)
+
     write_file(g_SpawnFile, line, -1)
 
-    new entity,team
-    while ((entity = find_ent_by_class(entity, EDIT_CLASSNAME))){
-        team = entity_get_int(entity,EV_INT_iuser2)
-        Point_WriteToFlie(g_SpawnFile,team,entity,1)
+    new entity, team
+
+    while ((entity = find_ent_by_class(entity, EDIT_CLASSNAME)))
+    {
+        team = entity_get_int(entity, EV_INT_iuser2)
+
+        Point_WriteToFlie(g_SpawnFile, team, entity, saveformat)
     }
 
     return 1
@@ -1003,6 +1019,21 @@ stock Point_WriteToFlie(Flie[],team,entity,saveformat)
         format(line, 127, "^"origin^" ^"%d %d %d^"", nOrigin[0], nOrigin[1], nOrigin[2])
         write_file(Flie, line, -1)
         format(line, 127, "^"angles^" ^"0 %d 0^"^n}", nAngles[1])
+        write_file(Flie, line, -1)
+    }
+    else if (saveformat == 3) // mirrored
+    {
+        if (team == 1)
+        {
+            sTeam = "CT"
+        }
+        else
+        {
+            sTeam = "T"
+        }
+
+        format(line, 127, "%s %d %d %d %d %d %d", sTeam, nOrigin[0], nOrigin[1], nOrigin[2], 0, nAngles[1], 0)
+
         write_file(Flie, line, -1)
     }
 }
