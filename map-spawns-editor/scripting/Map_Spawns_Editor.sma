@@ -121,6 +121,19 @@ public editor_onoff(id,level,cid)
 }
 
 
+stock get_menu_item_info(menu, item)
+{
+    new iItemInfo, nItemAccessLevel, nItemCallbackID
+    new sItemInfo[6], sItemCurText[101]
+
+    menu_item_getinfo(menu, item, nItemAccessLevel, sItemInfo, 5, sItemCurText, 100, nItemCallbackID)
+
+    iItemInfo = str_to_num(sItemInfo)
+
+    return iItemInfo
+}
+
+
 // Menu 2.0
 
 public mse_menu(id, level, cid)
@@ -213,15 +226,11 @@ public mse_menu_callback(id, menu, item)
         return PLUGIN_CONTINUE
     }
 
-    // to store item's data
-    new nItemAccessLevel, nItemCallbackID
-    new sItemInfo[6], sItemCurText[101], sItemNewText[101]
+    new sItemNewText[101]
 
-    menu_item_getinfo(menu, item, nItemAccessLevel, sItemInfo, 5, sItemCurText, 100, nItemCallbackID)
+    new iItemInfo = get_menu_item_info(menu, item)
 
-    new nItemInfo = str_to_num(sItemInfo)
-
-    if (nItemInfo == 1 || nItemInfo == 8)
+    if (iItemInfo == 1 || iItemInfo == 8)
     {
         format(sItemNewText, 100, "\wT: %d -> \y%d\w | CT: %d -> \y%d\w", g_SpawnT, g_EditT, g_SpawnCT, g_EditCT)
 
@@ -229,7 +238,7 @@ public mse_menu_callback(id, menu, item)
 
         return ITEM_DISABLED
     }
-    else if (nItemInfo == 2 || nItemInfo == 9)
+    else if (iItemInfo == 2 || iItemInfo == 9)
     {
         new sEntType[4]
 
@@ -249,7 +258,7 @@ public mse_menu_callback(id, menu, item)
 
         menu_item_setname(menu, item, sItemNewText)
     }
-    else if (nItemInfo == 7)
+    else if (iItemInfo == 7)
     {
         if (g_bSpawnsChanged)
         {
@@ -287,15 +296,9 @@ public mse_menu_handler(id, menu, item)
     new iZOffset = get_pcvar_num(g_Cvar_ZOffset)
     new iUnsafeCheck = get_pcvar_num(g_Cvar_UnsafeCheck)
 
-    // to store item's data
-    new nItemAccessLevel, nItemCallbackID
-    new sItemInfo[6], sItemCurText[101]
+    new iItemInfo = get_menu_item_info(menu, item)
 
-    menu_item_getinfo(menu, item, nItemAccessLevel, sItemInfo, 5, sItemCurText, 100, nItemCallbackID)
-
-    new nItemInfo = str_to_num(sItemInfo)
-
-    switch (nItemInfo)
+    switch (iItemInfo)
     {
         case 2:
         {
@@ -492,12 +495,12 @@ public mse_menu_handler(id, menu, item)
     }
 
     // stay on the first page
-    if (nItemInfo >= 1 && nItemInfo <= 7)
+    if (iItemInfo >= 1 && iItemInfo <= 7)
     {
         menu_display(id, g_nMSEMenuID, 0)
     }
     // stay on the second page
-    else if (nItemInfo >= 8 && nItemInfo <= 12)
+    else if (iItemInfo >= 8 && iItemInfo <= 12)
     {
         menu_display(id, g_nMSEMenuID, 1)
     }
