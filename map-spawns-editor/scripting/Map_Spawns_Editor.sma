@@ -134,6 +134,46 @@ stock get_menu_item_info(menu, item)
 }
 
 
+stock play_sound(id, type)
+{
+    /*
+    * type:
+    * 1 - success (add)
+    * 2 - success (delete)
+    * 3 - success (rotate)
+    * 4 - success (file system)
+    * 5-9 - reserved
+    * 10 - failure (any)
+    */
+
+    switch (type)
+    {
+        case 1:
+        {
+            client_cmd(id, "spk buttons/button9")
+        }
+        case 2:
+        {
+            client_cmd(id, "spk buttons/button3")
+        }
+        case 3:
+        {
+            client_cmd(id, "spk buttons/blip1")
+        }
+        case 4:
+        {
+            client_cmd(id, "spk buttons/blip2")
+        }
+        case 10:
+        {
+            client_cmd(id, "spk buttons/button2")
+        }
+    }
+
+    return 1
+}
+
+
 // Menu 2.0
 
 public mse_menu(id, level, cid)
@@ -313,7 +353,7 @@ public mse_menu_handler(id, menu, item)
         {
             if (iUnsafeCheck && !SafeRangeCheck(id, iZOffset))
             {
-                client_cmd(id, "spk buttons/button2")
+                play_sound(id, 10)
 
                 client_print(0, print_chat, ">> %L", id, "MSG_CHECK_FAULT")
             }
@@ -344,8 +384,8 @@ public mse_menu_handler(id, menu, item)
                         }
                     }
                 }
-                
-                client_cmd(id, "spk buttons/button9")
+
+                play_sound(id, 1)
             }
         }
         case 4:
@@ -358,11 +398,11 @@ public mse_menu_handler(id, menu, item)
 
                 Entity_Turn_angle(entity, iRotationAngle)
 
-                client_cmd(id, "spk buttons/blip1")
+                play_sound(id, 3)
             }
             else
             {
-                client_cmd(id, "spk buttons/button2")
+                play_sound(id, 10)
 
                 client_print(0, print_chat, ">> %L", id, "ERROR_POINT_NOTFOUND")
             }
@@ -377,11 +417,11 @@ public mse_menu_handler(id, menu, item)
 
                 Entity_Turn_angle(entity, iRotationAngle * -1)
 
-                client_cmd(id, "spk buttons/blip1")
+                play_sound(id, 3)
             }
             else
             {
-                client_cmd(id, "spk buttons/button2")
+                play_sound(id, 10)
 
                 client_print(0, print_chat, ">> %L", id, "ERROR_POINT_NOTFOUND")
             }
@@ -396,7 +436,7 @@ public mse_menu_handler(id, menu, item)
 
                 remove_entity(entity)
 
-                client_cmd(id, "spk buttons/button3")
+                play_sound(id, 2)
 
                 if (team == 1)
                 {
@@ -417,7 +457,7 @@ public mse_menu_handler(id, menu, item)
             }
             else
             {
-                client_cmd(id, "spk buttons/button2")
+                play_sound(id, 10)
 
                 client_print(0, print_chat, ">> %L", id, "ERROR_POINT_NOTFOUND")
             }
@@ -430,7 +470,7 @@ public mse_menu_handler(id, menu, item)
 
                 Load_SpawnFlie(0)
 
-                client_cmd(id, "spk buttons/blip2")
+                play_sound(id, 4)
 
                 client_print(0, print_chat, ">> %L (T=%d,CT=%d)", id, "MSG_SAVE_SPAWNS_FILE", g_EditT, g_EditCT)
             }
@@ -454,7 +494,7 @@ public mse_menu_handler(id, menu, item)
 
             g_bSpawnsChanged = true
 
-            client_cmd(id, "spk buttons/blip2")
+            play_sound(id, 4)
 
             switch (g_nActiveEntType)
             {
@@ -474,7 +514,7 @@ public mse_menu_handler(id, menu, item)
             {
                 delete_file(g_SpawnFile)
 
-                client_cmd(id, "spk buttons/blip2")
+                play_sound(id, 4)
 
                 client_print(0, print_chat, ">> %L", id, "MSG_DEL_SPAWNSFILE")
             }
@@ -483,7 +523,7 @@ public mse_menu_handler(id, menu, item)
         {
             if (Export_RipentFormatFile())
             {
-                client_cmd(id, "spk buttons/blip2")
+                play_sound(id, 4)
 
                 client_print(0, print_chat, ">> %L [%s] (T=%d,CT=%d)", id, "MSG_EXPORT_SPAWNS_FILE", g_EntFile, g_EditT, g_EditCT)
             }
