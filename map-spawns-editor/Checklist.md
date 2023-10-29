@@ -2,7 +2,7 @@
 
 This checklist describes Map Spawns Editor functionality and can be used for testing purposes.
 
-Updated for version 1.1.0
+Updated for version 1.2.0
 
 ## General
 
@@ -38,10 +38,12 @@ Updated for version 1.1.0
 - Delete the active spawn
 - Delete all T spawns
 - Delete all CT spawns
+- amx_map currentmap
 
 ## Interacting with the file system
 
 - Write spawns config
+- Write mirrored spawns config
 - Delete spawns config
 - Export as ENT
 - Trigger _die.cfg to be written

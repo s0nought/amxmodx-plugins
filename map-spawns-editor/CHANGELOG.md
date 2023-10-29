@@ -2,6 +2,22 @@
 
 _**Note:** newer entries are added to the top._
 
+## [1.2.0] 2023.10.29
+
+### Added
+
+- `amx_map currentmap` option to the menu
+- Mirror spawns option to the menu
+
+### Changed
+
+- Getting menu item info
+- Playing sound
+
+### Removed
+
+- Redundant get_mapname call
+
 ## [1.1.0] 2023.10.28
 
 ### Added

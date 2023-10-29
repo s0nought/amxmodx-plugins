@@ -12,7 +12,7 @@
 
 # Features
 
-- [s0nought](https://github.com/s0nought) (v1.1.0)
+- [s0nought](https://github.com/s0nought) (v1.1.0, v1.2.0)
 
 # Special thanks
 

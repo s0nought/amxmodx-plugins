@@ -11,7 +11,7 @@
 #define REQUIRED_ADMIN_LEVEL ADMIN_BAN // ADMIN_LEVEL_C
 
 #define PLUGIN_NAME "Map Spawns Editor"
-#define VERSION     "1.1.0"
+#define VERSION     "1.2.0"
 #define AUTHOR      "iG_os"
 
 // CS default MDL and SPR

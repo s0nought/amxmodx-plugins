@@ -22,7 +22,9 @@ A spawn point (Spawn) is a special entity that instructs the game engine on wher
 
 This plugin is useful for fixing bad spawns (e.g., ones that cause telefrag) or mirroring the spawns.
 
-![Map Spawns Editor v1.1.0](./screenshots/map_spawns_editor_002_v110.jpg "Map Spawns Editor v1.1.0")
+![Map Spawns Editor v1.2.0 screenshot 1](./screenshots/map_spawns_editor_003_v120a.jpg "Map Spawns Editor v1.2.0 screenshot 1")
+
+![Map Spawns Editor v1.2.0 screenshot 2](./screenshots/map_spawns_editor_003_v120b.jpg "Map Spawns Editor v1.2.0 screenshot 2")
 
 ## Hints
 
